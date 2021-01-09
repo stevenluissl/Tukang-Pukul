@@ -46,4 +46,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
+
+    <!--image slider-->
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/caroselView"
+        android:layout_width="332dp"
+        android:layout_height="214dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285">
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content" />
+    </com.synnapps.carouselview.CarouselView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
