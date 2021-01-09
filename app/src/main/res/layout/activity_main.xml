@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbg"
+    tools:context=".MainActivity">
+
+    <!--doodle-->
+    <ImageView
+        android:id="@+id/doodle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/doodle"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <!--border-->
+    <ImageView
+        android:id="@+id/border"
+        android:layout_width="336dp"
+        android:layout_height="485dp"
+        android:src="@drawable/border"
+        app:layout_constraintBottom_toBottomOf="@+id/doodle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/doodle" />
+
+    <!--logo-->
+
+    <!--foodtower-->
+
+    <ImageView
+        android:id="@+id/logofoodtower"
+        android:layout_width="118dp"
+        android:layout_height="122dp"
+        android:src="@drawable/logofoodtower"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.318" />
+
+    <ImageView
+        android:id="@+id/foodtower"
+        android:layout_width="296dp"
+        android:layout_height="381dp"
+        android:src="@drawable/foodtower"
+        app:layout_constraintBottom_toBottomOf="@+id/doodle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/doodle"
+        app:layout_constraintTop_toTopOf="@+id/doodle"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <!--Login or sign up with google-->
+    <TextView
+        android:id="@+id/loginorsignup"
+        android:layout_width="299dp"
+        android:layout_height="37dp"
+        android:text="Login or Sign Up with Google"
+        android:textColor="#FFFFFF"
+        android:textSize="23dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.727" />
+
+    <!--google button-->
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="250dp"
+        android:layout_height="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/doodle"
+        app:layout_constraintVertical_bias="0.633"
+        android:src="@drawable/googlelogo"
+        android:scaleType="fitStart"
+        android:background="@drawable/googlebutton"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/google"
+        android:layout_width="96dp"
+        android:layout_height="38dp"
+        android:text="Google"
+        android:textColor="#000000"
+        android:textSize="27sp"
+        app:layout_constraintBottom_toBottomOf="@+id/doodle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.552"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+</androidx.constraintlayout.widget.ConstraintLayout>
