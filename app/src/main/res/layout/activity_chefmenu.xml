@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chefmenu">
+
+<!--fadetop-->
+    <ImageView
+        android:layout_width="411dp"
+        android:layout_height="146dp"
+        android:src="@drawable/fade_top"
+        android:id="@+id/fadetopchef"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+<!--fadebottom-->
+
+    <!--logoprofile-->
+
+    <ImageView
+        android:id="@+id/fadebottomchef"
+        android:layout_width="414dp"
+        android:layout_height="745dp"
+        android:src="@drawable/fade_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profilechef"
+        android:layout_width="80dp"
+        android:layout_height="70dp"
+        android:src="@drawable/logoprofilejurumasak"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+<!--location-->
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="136dp"
+        android:layout_height="35dp"
+        android:src="@drawable/location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+<!--namajurumasak-->
+    <ImageView
+        android:id="@+id/namanotelpjurumasak"
+        android:layout_width="233dp"
+        android:layout_height="42dp"
+        android:src="@drawable/namanotelpjurumasak"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266" />
+
+<!--line-->
+    <ImageView
+        android:id="@+id/linechef"
+        android:layout_width="423dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="172dp"
+        android:src="@drawable/line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fadetopchef"
+        app:layout_constraintVertical_bias="0.103" />
+
+<!--subscribe-->
+    <Button
+        android:id="@+id/subscribe"
+        android:layout_width="81dp"
+        android:layout_height="36dp"
+        android:text="+ Subscribe"
+        android:textSize="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.906"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
+</androidx.constraintlayout.widget.ConstraintLayout>

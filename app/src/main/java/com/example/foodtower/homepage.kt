@@ -1,5 +1,6 @@
 package com.example.foodtower
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -59,5 +60,14 @@ class homepage : AppCompatActivity() {
 
         })
 //search view
+        chefpage.setOnClickListener {
+            val intent = Intent(this,chefmenu::class.java)
+            startActivity(intent)
+        }
+
+        button2.setOnClickListener {
+            val intent = Intent(this,chefmenu::class.java)
+            startActivity(intent)
+        }
     }
 }

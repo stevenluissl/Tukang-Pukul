@@ -85,6 +85,7 @@
                     android:id="@+id/listView"
                     android:layout_width="220dp"
                     android:layout_height="wrap_content" />
+
             </com.synnapps.carouselview.CarouselView>
 
             <androidx.cardview.widget.CardView
@@ -103,42 +104,43 @@
 
                     <ImageView
                         android:id="@+id/fade_recommend1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="398dp"
+                        android:layout_height="189dp"
                         android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.545"
                         app:srcCompat="@drawable/fade_recommend_home" />
 
                     <ImageView
                         android:id="@+id/profile1"
-                        android:layout_width="62dp"
-                        android:layout_height="68dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="47dp"
+                        android:layout_height="51dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="24dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/logoprofilejurumasak" />
 
                     <TextView
                         android:id="@+id/jurumasak1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="96dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_width="171dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="108dp"
+                        android:layout_marginTop="36dp"
                         android:text="Nama Juru Masak"
-                        android:textSize="30sp"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/masakan1"
-                        android:layout_width="100dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_width="90dp"
+                        android:layout_height="72dp"
+                        android:layout_marginStart="48dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -146,9 +148,9 @@
 
                     <ImageView
                         android:id="@+id/masakan2"
-                        android:layout_width="122dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="135dp"
+                        android:layout_width="116dp"
+                        android:layout_height="74dp"
+                        android:layout_marginStart="144dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -156,13 +158,27 @@
 
                     <ImageView
                         android:id="@+id/masakan3"
-                        android:layout_width="125dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="272dp"
+                        android:layout_width="105dp"
+                        android:layout_height="76dp"
+                        android:layout_marginStart="264dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/gmbr3" />
+
+                    <Button
+                        android:id="@+id/chefpage"
+                        android:layout_width="72dp"
+                        android:layout_height="32dp"
+                        android:visibility="visible"
+                        android:text="View"
+                        android:textSize="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/fade_recommend1"
+                        app:layout_constraintHorizontal_bias="0.914"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.197" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -183,21 +199,22 @@
 
                     <ImageView
                         android:id="@+id/fade_recommend2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="395dp"
+                        android:layout_height="190dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0"
+                        app:layout_constraintVertical_bias="0.0"
                         app:srcCompat="@drawable/fade_recommend_home" />
 
                     <ImageView
                         android:id="@+id/profile2"
-                        android:layout_width="62dp"
-                        android:layout_height="68dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="44dp"
+                        android:layout_height="47dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="16dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/logoprofilejurumasak" />
@@ -206,18 +223,18 @@
                         android:id="@+id/jurumasak2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="96dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="112dp"
+                        android:layout_marginTop="28dp"
                         android:text="Nama Juru Masak"
-                        android:textSize="30sp"
+                        android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/masakan4"
-                        android:layout_width="100dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_width="102dp"
+                        android:layout_height="72dp"
+                        android:layout_marginStart="56dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -225,9 +242,9 @@
 
                     <ImageView
                         android:id="@+id/masakan5"
-                        android:layout_width="122dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="135dp"
+                        android:layout_width="119dp"
+                        android:layout_height="73dp"
+                        android:layout_marginStart="144dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -235,13 +252,25 @@
 
                     <ImageView
                         android:id="@+id/masakan6"
-                        android:layout_width="125dp"
-                        android:layout_height="95dp"
-                        android:layout_marginStart="272dp"
+                        android:layout_width="110dp"
+                        android:layout_height="71dp"
+                        android:layout_marginStart="248dp"
                         android:layout_marginTop="92dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/gmbr3" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="72dp"
+                        android:layout_height="31dp"
+                        android:layout_marginTop="24dp"
+                        android:text="View"
+                        android:textSize="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.912"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
