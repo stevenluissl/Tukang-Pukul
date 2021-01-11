@@ -15,5 +15,21 @@ class chefmenu : AppCompatActivity() {
             val intent = Intent(this,subscribepage::class.java)
             startActivity(intent)
         }
+        vote.setOnClickListener {
+            val intent = Intent(this,food_menu1::class.java)
+            startActivity(intent)
+        }
+        vote1.setOnClickListener {
+            val intent = Intent(this,food_menu2::class.java)
+            startActivity(intent)
+        }
+        vote2.setOnClickListener {
+            val intent = Intent(this,food_menu3::class.java)
+            startActivity(intent)
+        }
+        vote3.setOnClickListener {
+            val intent = Intent(this,food_menu1::class.java)
+            startActivity(intent)
+        }
     }
 }
