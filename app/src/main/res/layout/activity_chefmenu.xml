@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".chefmenu">
 
-<!--fadetop-->
+    <!--search view-->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="264dp"
+        android:layout_height="52dp"
+        android:background="@drawable/custom_searchview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <!--fadetop-->
     <ImageView
         android:layout_width="411dp"
         android:layout_height="146dp"
@@ -100,106 +112,127 @@
         app:layout_constraintVertical_bias="0.139" />
 
 <!--gambar-->
-    <ImageView
-        android:id="@+id/menu1"
-        android:layout_width="163dp"
-        android:layout_height="167dp"
-        android:src="@drawable/menu1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/fadebottomchef"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
 
-    <ImageView
-        android:id="@+id/menu2"
-        android:layout_width="163dp"
-        android:layout_height="167dp"
-        android:src="@drawable/menu2"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintTop_toTopOf="@id/linechef">
 
-    <ImageView
-        android:id="@+id/menu3"
-        android:layout_width="163dp"
-        android:layout_height="167dp"
-        android:src="@drawable/menu3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/menu1"
+                android:layout_width="163dp"
+                android:layout_height="167dp"
+                android:layout_marginEnd="219dp"
+                android:layout_marginBottom="310dp"
+                android:src="@drawable/menu1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
-    <ImageView
-        android:id="@+id/menu4"
-        android:layout_width="163dp"
-        android:layout_height="167dp"
-        android:layout_marginTop="427dp"
-        android:src="@drawable/menu1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fadebottomchef"
-        app:layout_constraintVertical_bias="0.0" />
+            <Button
+                android:id="@+id/vote"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:text="View"
+                android:textSize="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.234"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.316" />
 
-    <Button
-        android:id="@+id/vote3"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
-        android:text="View"
-        android:textSize="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linechef"
-        app:layout_constraintVertical_bias="0.656" />
+            <ImageView
+                android:id="@+id/menu2"
+                android:layout_width="163dp"
+                android:layout_height="167dp"
+                android:src="@drawable/menu2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.879"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.051" />
 
-    <Button
-        android:id="@+id/vote"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
-        android:text="View"
-        android:textSize="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+            <Button
+                android:id="@+id/vote1"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:text="View"
+                android:textSize="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.773"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.316" />
 
-    <Button
-        android:id="@+id/vote1"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
-        android:text="View"
-        android:textSize="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.543" />
+            <ImageView
+                android:id="@+id/menu3"
+                android:layout_width="163dp"
+                android:layout_height="167dp"
+                android:src="@drawable/menu3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.116"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.562" />
 
-    <Button
-        android:id="@+id/vote2"
-        android:layout_width="66dp"
-        android:layout_height="26dp"
-        android:text="View"
-        android:textSize="6dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.78" />
+            <Button
+                android:id="@+id/vote2"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:text="View"
+                android:textSize="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.234"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.668" />
+
+            <ImageView
+                android:id="@+id/menu4"
+                android:layout_width="163dp"
+                android:layout_height="167dp"
+                android:src="@drawable/menu1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.879"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.562" />
+
+            <Button
+                android:id="@+id/vote3"
+                android:layout_width="66dp"
+                android:layout_height="26dp"
+                android:text="View"
+                android:textSize="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.773"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.668" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
