@@ -281,9 +281,10 @@
     </androidx.core.widget.NestedScrollView>
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/logo_home"
         android:layout_width="54dp"
         android:layout_height="59dp"
+        android:background="#0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -291,5 +292,44 @@
         app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
         app:layout_constraintVertical_bias="0.529"
         app:srcCompat="@drawable/logo_home" />
+
+    <ImageButton
+        android:id="@+id/logo_message"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.545"
+        app:srcCompat="@drawable/logo_message" />
+
+    <ImageButton
+        android:id="@+id/logo_notif"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.484"
+        app:srcCompat="@drawable/logo_notif" />
+
+    <ImageButton
+        android:id="@+id/logo_acc"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.484"
+        app:srcCompat="@drawable/logo_acc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
