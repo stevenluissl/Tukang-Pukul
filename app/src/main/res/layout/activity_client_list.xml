@@ -50,4 +50,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.66" />
 
+    <ImageView
+        android:layout_width="182dp"
+        android:layout_height="147dp"
+        android:src="@drawable/logoprofilejurumasak"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
