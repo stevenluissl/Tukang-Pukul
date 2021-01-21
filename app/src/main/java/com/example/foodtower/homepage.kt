@@ -69,5 +69,10 @@ class homepage : AppCompatActivity() {
             val intent = Intent(this,chefmenu::class.java)
             startActivity(intent)
         }
+        val menu_drop = findViewById<ImageButton>(R.id.menu_drop)
+        menu_drop?.setOnClickListener {
+            val homepage = Intent(this@homepage,navigation_bar::class.java)
+            startActivity(homepage)
+        }
     }
 }
