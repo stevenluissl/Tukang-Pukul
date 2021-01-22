@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".client_list"></activity>
+        <activity android:name=".adding_food"></activity>
+        <activity android:name=".client_list" />
         <activity android:name=".chef_page" />
         <activity android:name=".vote_result" />
         <activity android:name=".navigation_bar" />
