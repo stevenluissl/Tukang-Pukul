@@ -7,26 +7,6 @@
     android:orientation="vertical"
     tools:context=".adding_food">
 
-    <ImageView
-        android:id="@+id/midadding"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fademid"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/fadebottomadding"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/fade_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -73,10 +53,9 @@
                 android:src="@drawable/insertphotofield"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.124" />
+                app:layout_constraintVertical_bias="0.208" />
 
             <TextView
                 android:id="@+id/edit"
@@ -125,10 +104,10 @@
                 android:text="Nama Makanan"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.606" />
+                app:layout_constraintVertical_bias="0.616" />
 
             <EditText
                 android:id="@+id/editTextTextPostalAddress"
@@ -138,10 +117,9 @@
                 android:inputType="textPostalAddress"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.275"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.746" />
+                app:layout_constraintVertical_bias="0.755" />
 
             <Button
                 android:id="@+id/button3"
