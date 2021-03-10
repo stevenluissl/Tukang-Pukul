@@ -13,10 +13,10 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
-        button3.setOnClickListener {
+        button4.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity2::class.java)
             Intent2Act.putExtra(EXTRA_NAMA,"Adi")
-            Intent2Act.putExtra(EXTRA_UMUR,"32")
+            Intent2Act.putExtra(EXTRA_UMUR,32)
             startActivity(Intent2Act)
         }
 
