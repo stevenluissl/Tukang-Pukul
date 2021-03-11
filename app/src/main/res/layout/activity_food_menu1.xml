@@ -10,7 +10,8 @@
         android:id="@+id/fade_food_menu"
         android:layout_width="414dp"
         android:layout_height="740dp"
-        android:src="@drawable/fade_bottom" />
+        android:src="@drawable/fade_bottom"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/fademid"

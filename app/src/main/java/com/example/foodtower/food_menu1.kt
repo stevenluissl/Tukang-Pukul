@@ -18,10 +18,10 @@ class food_menu1 : AppCompatActivity() {
         setContentView(R.layout.activity_food_menu1)
 
         button.setOnClickListener {
-            var Intent3Act = Intent(this,MainActivity3::class.java)
+            var Intent2Act = Intent(this,MainActivity3::class.java)
             var p = person( "Adi",0,"adi@gmail.com")
-            Intent3Act.putExtra(EXTRA_PERSON,p)
-            startActivity(Intent3Act)
+            Intent2Act.putExtra(EXTRA_PERSON,p)
+            startActivity(Intent2Act)
         }
 
         val hometop = findViewById<ImageButton>(R.id.hometop)
