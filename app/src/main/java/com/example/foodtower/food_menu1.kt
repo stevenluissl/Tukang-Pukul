@@ -1,5 +1,6 @@
 package com.example.foodtower
 
+import android.app.Person
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,11 +10,19 @@ import android.widget.AbsListView
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.activity_food_menu1.*
 
 class food_menu1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_menu1)
+
+        button.setOnClickListener {
+            var Intent3Act = Intent(this,MainActivity3::class.java)
+            var p = person( "Adi",0,"adi@gmail.com")
+            Intent3Act.putExtra(EXTRA_PERSON,p)
+            startActivity(Intent3Act)
+        }
 
         val hometop = findViewById<ImageButton>(R.id.hometop)
         hometop?.setOnClickListener {
