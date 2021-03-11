@@ -9,7 +9,7 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-       var name = intent.getStringExtra(EXTRA_NAMA) ?: "No-name"
+        var name = intent.getStringExtra(EXTRA_NAMA) ?: "No-name"
         var umur = intent.getIntExtra(EXTRA_UMUR,0)
 
         textView.text = "nama = $name dengan Umur $umur"
