@@ -11,8 +11,8 @@ class MainActivity3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main3)
 
-        var p = intent.getParcelableExtra<Person>(EXTRA_PERSON)
+        var p = intent.getParcelableExtra<person>(EXTRA_PERSON)
 
-        textView2.text = "Nama = ${p?.Nama} dengan Umur ${p?.Umur} Email = ${p?.Email}"4
+        textView2.text = "Nama = ${p?.Nama} dengan Umur ${p?.Umur} Email = ${p?.Email}"
     }
 }
