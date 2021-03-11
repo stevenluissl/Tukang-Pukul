@@ -1,11 +1,14 @@
 package com.example.foodtower
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.activity_chef_page.*
+import kotlinx.android.synthetic.main.activity_food_menu1.*
 import kotlinx.android.synthetic.main.activity_homepage.*
+
 
 class chef_page : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +34,13 @@ class chef_page : AppCompatActivity() {
         addmenu?.setOnClickListener {
             val addfood = Intent(this@chef_page,adding_food::class.java)
             startActivity(addfood)
+        }
+
+        smsbutton.setOnClickListener {
+            var uriPhone = Uri.parse("smsto: 123456789")
+            var intentSMS: Intent = Intent(Intent.ACTION_SENDTO,uriPhone)
+            intentSMS.putExtra("sms_body", "")
+            startActivity(intentSMS)
         }
     }
 }
