@@ -11,6 +11,6 @@ class MainActivity3 : AppCompatActivity() {
 
         var p = intent.getParcelableExtra<person>(EXTRA_PERSON)
 
-        textView2.text = "Nama = ${p?.Nama} dengan Umur ${p?.Umur} Email = ${p?.Email}"
+        textView2.text = "Nama = ${p?.Name} dengan Umur ${p?.Umur} Email = ${p?.Email}"
     }
 }
