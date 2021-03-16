@@ -25,7 +25,7 @@ class adding_food : AppCompatActivity() {
 
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
-        var strURL = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.liputan6.com%2Flifestyle%2Fread%2F4121614%2Fpenulis-kuliner-amerika-sebut-indomie-goreng-sebagai-menu-makan-malam-paling-enak&psig=AOvVaw2XjjUlqYJdvVnUfRPIMFec&ust=1615991425715000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMC95KyDte8CFQAAAAAdAAAAABAD";
+        var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
         addImg.setOnClickListener {
             Thread (Runnable {
