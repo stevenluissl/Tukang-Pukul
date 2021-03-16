@@ -25,7 +25,7 @@ class adding_food : AppCompatActivity() {
 
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
-        val strURL = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.masakapahariini.com%2Fresep%2Fresep-nasi-goreng-jawa%2F&psig=AOvVaw1VyVGfB1VoyrJhzhMGJTPt&ust=1615987325823000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJjwkYb0tO8CFQAAAAAdAAAAABAD"
+        var strURL = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fendeus.tv%2Fresep%2Fnasi-goreng-sapi&psig=AOvVaw3LPxN-BzmeGv5LVuRfY4K4&ust=1615990769867000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMjzn_SAte8CFQAAAAAdAAAAABAD";
 
         addImg.setOnClickListener {
             Thread (Runnable {
@@ -34,22 +34,6 @@ class adding_food : AppCompatActivity() {
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
-        }
-
-        private fun processBitMap(url: String): Bitmap? {
-            return try {
-                val url = URL(url)
-                val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
-                connection.doInput = true
-                connection.connect()
-                val input: InputStream = connection.inputStream
-                val myBitmap = BitmapFactory.decodeStream(input)
-
-                myBitmap
-            } catch (e: IOException) {
-                e.printStackTrace()
-                null
-            }
         }
 
         button4.setOnClickListener {
@@ -73,6 +57,22 @@ class adding_food : AppCompatActivity() {
         button3.setOnClickListener {
             editTextTextPersonName10.text = editTextTextPostalAddress.text
             editTextTextPostalAddress.setText("")
+        }
+    }
+
+    private fun processBitMap(url: String): Bitmap? {
+        return try {
+            val url = URL(url)
+            val connection: HttpURLConnection = url.openConnection() as HttpURLConnection
+            connection.doInput = true
+            connection.connect()
+            val input: InputStream = connection.inputStream
+            val myBitmap = BitmapFactory.decodeStream(input)
+
+            myBitmap
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
         }
     }
 
