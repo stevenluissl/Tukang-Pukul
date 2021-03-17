@@ -28,7 +28,8 @@ class adding_food : AppCompatActivity() {
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
         var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
-        // memanggil addImg untuk bisa di click
+        // memanggil addImg untuk bisa di click dan membuat invisible
+        // agar pada saat image muncul maka ImageButton dan TextView akan menghilang
         addImg.setOnClickListener {
             Thread (Runnable {
                 // merequest gambar dari link URL
@@ -42,6 +43,11 @@ class adding_food : AppCompatActivity() {
             // pada saat image button diclick Logo dan tulisan akan menjadi invisible
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
+        }
+
+        fragment.setOnClickListener {
+            val fragment1 = Intent(this, MainActivityFragment::class.java)
+            startActivity(fragment1)
         }
 
         button4.setOnClickListener {
