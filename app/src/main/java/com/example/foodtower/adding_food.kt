@@ -35,6 +35,9 @@ class adding_food : AppCompatActivity() {
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
+            camera.setVisibility(View.INVISIBLE)
+            chooseortakephoto.setVisibility(View.INVISIBLE)
+            // luis ajg
         }
 
         button4.setOnClickListener {
