@@ -34,6 +34,8 @@ class adding_food : AppCompatActivity() {
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
+            camera.setVisibility(View.INVISIBLE)
+            chooseortakephoto.setVisibility(View.INVISIBLE)
         }
 
         button4.setOnClickListener {
