@@ -76,7 +76,7 @@ class adding_food : AppCompatActivity() {
             connection.doInput = true
             connection.connect()
             val input: InputStream = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input)
+            val myBitmap = BitmapFactory.decodeStream(input) //gambar didecode berupa data stream
 //gambar yang sudah dicode di kembalikan ke bitmap lama
             myBitmap
         } catch (e: IOException) {
