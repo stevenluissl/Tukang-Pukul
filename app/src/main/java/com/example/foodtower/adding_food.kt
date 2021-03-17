@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
-import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_adding_food.*
 import java.io.IOException
 import java.io.InputStream
@@ -37,6 +36,7 @@ class adding_food : AppCompatActivity() {
             }).start()
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
+            // luis ajg
         }
 
         button4.setOnClickListener {
