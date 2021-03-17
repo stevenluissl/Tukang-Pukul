@@ -8,10 +8,8 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
-import com.example.foodtower.Fragment.FragmentA
 import kotlinx.android.synthetic.main.activity_adding_food.*
 import java.io.IOException
 import java.io.InputStream
@@ -38,6 +36,7 @@ class adding_food : AppCompatActivity() {
             }).start()
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
+            // luis ajg
         }
 
         button4.setOnClickListener {
@@ -45,12 +44,6 @@ class adding_food : AppCompatActivity() {
             Intent2Act.putExtra(EXTRA_NAMA,"Adi")
             Intent2Act.putExtra(EXTRA_UMUR,32)
             startActivity(Intent2Act)
-        }
-
-        val fragment = findViewById<Button>(R.id.fragment)
-        fragment.setOnClickListener {
-            val fragment1 = Intent(this@adding_food,main_fragment::class.java)
-            startActivity(fragment1)
         }
 
         val backsatu = findViewById<ImageButton>(R.id.backsatu)
