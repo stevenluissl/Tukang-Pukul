@@ -23,27 +23,29 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
-//mendeklarasikan id image button dan image view dari adding_food.xml
+        // mendeklarasikan id image button dan image view dari adding_food.xml
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
         var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
-//memanggil addImg untuk bisa di tekan dan juga membuat invisible agar pada saat memanggil gambar dari internet maka gambar Imagebutton akan hilang
+        // memanggil addImg untuk bisa di click dan membuat invisible
+        // agar pada saat image muncul maka ImageButton dan TextView akan menghilang
         addImg.setOnClickListener {
             Thread (Runnable {
-//merequest gambar dari link URL
+                // merequest gambar dari link URL
                 val bitmap = processBitMap(strURL)
-//update image dilakukan melalui viewImg.post
+                //update image dilakukan melalui viewImg.post
                 viewImg.post {
-//data gambar diambil dari bitmap
+                    //data gamabar diambil dari bitmap
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
-//pada saat image button (camera)di click maka logo dan tulisan akan menjadi invisible
+            // pada saat image button diclick Logo dan tulisan akan menjadi invisible
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
-
         }
+
+        
 
         button4.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity2::class.java)
@@ -68,7 +70,8 @@ class adding_food : AppCompatActivity() {
             editTextTextPostalAddress.setText("")
         }
     }
-//proses request data dari server
+
+    // proses request data dari server
     private fun processBitMap(url: String): Bitmap? {
         return try {
             val url = URL(url)
@@ -76,8 +79,10 @@ class adding_food : AppCompatActivity() {
             connection.doInput = true
             connection.connect()
             val input: InputStream = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input) //gambar didecode berupa data stream
-//gambar yang sudah dicode di kembalikan ke bitmap lama
+            // gambar didecode berupa data stream
+            val myBitmap = BitmapFactory.decodeStream(input)
+
+            // gambar yag sudah didecode akan dikembalikan ke bitmap lama
             myBitmap
         } catch (e: IOException) {
             e.printStackTrace()
