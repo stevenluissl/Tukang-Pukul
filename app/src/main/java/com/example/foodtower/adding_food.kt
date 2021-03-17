@@ -36,7 +36,6 @@ class adding_food : AppCompatActivity() {
             }).start()
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
-            // luis ajg
         }
 
         button4.setOnClickListener {
@@ -62,7 +61,7 @@ class adding_food : AppCompatActivity() {
             editTextTextPostalAddress.setText("")
         }
     }
-
+    //proses request data dari server
     private fun processBitMap(url: String): Bitmap? {
         return try {
             val url = URL(url)
@@ -70,8 +69,8 @@ class adding_food : AppCompatActivity() {
             connection.doInput = true
             connection.connect()
             val input: InputStream = connection.inputStream
-            val myBitmap = BitmapFactory.decodeStream(input)
-
+            val myBitmap = BitmapFactory.decodeStream(input)// gambar didecode berupa data stream
+            // gambar yang sudah didecode dikembalikan ke bitmap lama
             myBitmap
         } catch (e: IOException) {
             e.printStackTrace()
