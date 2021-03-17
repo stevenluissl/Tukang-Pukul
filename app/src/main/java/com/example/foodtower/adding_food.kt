@@ -23,21 +23,26 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
-
+//mendeklarasikan id image button dan image view dari adding_food.xml
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
         var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
+//memanggil addImg untuk bisa di tekan dan juga membuat invisible agar pada saat memanggil gambar dari internet maka gambar Imagebutton akan hilang
         addImg.setOnClickListener {
             Thread (Runnable {
+//merequest gambar dari link URL
                 val bitmap = processBitMap(strURL)
+//update image dilakukan melalui viewImg.post
                 viewImg.post {
+//data gambar diambil dari bitmap
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
+//pada saat image button (camera)di click maka logo dan tulisan akan menjadi invisible
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
-            // luis ajg
+
         }
 
         button4.setOnClickListener {
@@ -63,7 +68,7 @@ class adding_food : AppCompatActivity() {
             editTextTextPostalAddress.setText("")
         }
     }
-
+//proses request data dari server
     private fun processBitMap(url: String): Bitmap? {
         return try {
             val url = URL(url)
@@ -72,7 +77,7 @@ class adding_food : AppCompatActivity() {
             connection.connect()
             val input: InputStream = connection.inputStream
             val myBitmap = BitmapFactory.decodeStream(input)
-
+//gambar yang sudah dicode di kembalikan ke bitmap lama
             myBitmap
         } catch (e: IOException) {
             e.printStackTrace()
