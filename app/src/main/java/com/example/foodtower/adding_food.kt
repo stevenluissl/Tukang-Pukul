@@ -23,21 +23,29 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
+        // mendeklarasikan id image button dan image view dari adding_food.xml
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
         var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
+        // memanggil addImg untuk bisa di click dan membuat invisible
+        // agar pada saat image muncul maka ImageButton dan TextView akan menghilang
         addImg.setOnClickListener {
             Thread (Runnable {
+                // merequest gambar dari link URL
                 val bitmap = processBitMap(strURL)
+                //update image dilakukan melalui viewImg.post
                 viewImg.post {
+                    //data gamabar diambil dari bitmap
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
+            // pada saat image button diclick Logo dan tulisan akan menjadi invisible
             camera.setVisibility(View.INVISIBLE)
             chooseortakephoto.setVisibility(View.INVISIBLE)
-            // luis ajg
         }
+
+        
 
         button4.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity2::class.java)
@@ -63,6 +71,7 @@ class adding_food : AppCompatActivity() {
         }
     }
 
+    // proses request data dari server
     private fun processBitMap(url: String): Bitmap? {
         return try {
             val url = URL(url)
@@ -70,8 +79,10 @@ class adding_food : AppCompatActivity() {
             connection.doInput = true
             connection.connect()
             val input: InputStream = connection.inputStream
+            // gambar didecode berupa data stream
             val myBitmap = BitmapFactory.decodeStream(input)
 
+            // gambar yag sudah didecode akan dikembalikan ke bitmap lama
             myBitmap
         } catch (e: IOException) {
             e.printStackTrace()
