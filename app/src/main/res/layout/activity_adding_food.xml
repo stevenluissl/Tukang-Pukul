@@ -14,8 +14,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -49,14 +51,15 @@
 
             <ImageView
                 android:id="@+id/insertphoto"
-                android:layout_width="297dp"
-                android:layout_height="239dp"
+                android:layout_width="345dp"
+                android:layout_height="296dp"
                 android:src="@drawable/insertphotofield"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.174" />
+                app:layout_constraintVertical_bias="0.301" />
 
             <TextView
                 android:id="@+id/edit"
@@ -69,19 +72,19 @@
                 app:layout_constraintHorizontal_bias="0.202"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.020" />
+                app:layout_constraintVertical_bias="0.022" />
 
             <ImageButton
                 android:id="@+id/camera"
-                android:layout_width="62dp"
-                android:layout_height="43dp"
+                android:layout_width="147dp"
+                android:layout_height="98dp"
                 android:src="@drawable/cameralogo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.163"
+                app:layout_constraintHorizontal_bias="0.481"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.513" />
+                app:layout_constraintVertical_bias="0.285" />
 
             <TextView
                 android:id="@+id/chooseortakephoto"
@@ -91,10 +94,10 @@
                 android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.759"
+                app:layout_constraintHorizontal_bias="0.469"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.499" />
+                app:layout_constraintVertical_bias="0.54" />
 
             <TextView
                 android:id="@+id/editTextTextPersonName10"
@@ -108,19 +111,19 @@
                 app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.616" />
+                app:layout_constraintVertical_bias="0.65" />
 
             <EditText
                 android:id="@+id/editTextTextPostalAddress"
-                android:layout_width="353dp"
-                android:layout_height="100dp"
+                android:layout_width="354dp"
+                android:layout_height="56dp"
                 android:ems="10"
                 android:inputType="textPostalAddress"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.755" />
+                app:layout_constraintVertical_bias="0.819" />
 
             <Button
                 android:id="@+id/button3"
@@ -129,10 +132,10 @@
                 android:text="Update"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.293"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.878" />
+                app:layout_constraintVertical_bias="0.977" />
 
             <Button
                 android:id="@+id/button4"
@@ -141,10 +144,10 @@
                 android:text="Intent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.684"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.976" />
+                app:layout_constraintVertical_bias="0.977" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
