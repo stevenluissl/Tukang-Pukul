@@ -23,6 +23,7 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
+
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
         var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
