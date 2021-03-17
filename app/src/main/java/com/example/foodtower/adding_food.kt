@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_adding_food.*
 import java.io.IOException
 import java.io.InputStream
@@ -25,7 +26,7 @@ class adding_food : AppCompatActivity() {
 
         val addImg = findViewById<ImageButton>(R.id.camera)
         val viewImg = findViewById<ImageView>(R.id.insertphoto)
-        var strURL = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.liputan6.com%2Flifestyle%2Fread%2F4121614%2Fpenulis-kuliner-amerika-sebut-indomie-goreng-sebagai-menu-makan-malam-paling-enak&psig=AOvVaw2XjjUlqYJdvVnUfRPIMFec&ust=1615991425715000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMC95KyDte8CFQAAAAAdAAAAABAD";
+        var strURL = "https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg";
 
         addImg.setOnClickListener {
             Thread (Runnable {
@@ -34,6 +35,8 @@ class adding_food : AppCompatActivity() {
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
+            camera.setVisibility(View.INVISIBLE)
+            chooseortakephoto.setVisibility(View.INVISIBLE)
         }
 
         button4.setOnClickListener {
