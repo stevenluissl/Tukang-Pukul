@@ -45,7 +45,10 @@ class adding_food : AppCompatActivity() {
             chooseortakephoto.setVisibility(View.INVISIBLE)
         }
 
-        
+        fragment.setOnClickListener {
+            val fragment1 = Intent(this, MainActivityFragment::class.java)
+            startActivity(fragment1)
+        }
 
         button4.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity2::class.java)
