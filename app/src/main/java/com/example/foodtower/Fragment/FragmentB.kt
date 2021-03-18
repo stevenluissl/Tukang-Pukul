@@ -31,15 +31,21 @@ class FragmentB : Fragment() {
         }
     }
 
-    //menginisialisasikan pesan awal dengan string yang kosong
+
+    //supaya data yang dikirm dari FragmentA dapat ditampung
+    //inisialisasi pesan awal dengan tipe data string dengan check null
+    //jika null maka default string kosong
     var pesann : String? = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
+        //inisialisasi val view sehingga dapat menggunakan property dari fragment
         val view = inflater.inflate(R.layout.fragment_b, container, false)
 
         //mengecek argument dari bundle apakah null, jika tidak ambil dara dengan key "pesan"
+        //menggunakan Bundle dengan arguments dan dengan key Pesan
         pesann = arguments?.getString("Pesan")
 
         //menginisialisasikan component
@@ -48,6 +54,7 @@ class FragmentB : Fragment() {
         //trampilan pesan
         pesan.text = pesann
 
+        //return view supaya untuk menampilkan pesan yang akan dilihat oleh pengguna
         return view
     }
 

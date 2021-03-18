@@ -32,6 +32,8 @@ class FragmentA : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
+    //menambahkan interfaceData untuk dapat menggunakan aktivitas Kirim
     private lateinit var interfaceData: InterfaceData
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,17 +41,22 @@ class FragmentA : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        //menghapus "return"nya dan ganti menjadi val view supaya dapat memanggil property dari layout fragment
+        //menghapus "return" dan menggantinya menjadi val view
+        // dengan tujuan dapat menggunakan property dari layout fragment
         val view = inflater.inflate(R.layout.fragment_a, container, false)
 
         //menambahkan komponen/property dari fragment
         interfaceData = activity as InterfaceData
 
-        // Menginisialisasikan komponen atau property dari fragment
+        // Menginisialisasikan komponen atau property Button dengan id "kirim"
+        // dan EditText dengan id pesan dari fragment
         val btn = view.findViewById<Button>(R.id.kirim)
         val pesan = view.findViewById<EditText>(R.id.pesan)
 
         //aksi ketika button di click
+
+        //ketika btn di click, interfaceData dengan property KirimData mengirim data
+        // berupa text kemudian akan di ubah ke String
         btn.setOnClickListener{
             interfaceData.KirimData(pesan.text.toString())
         }
