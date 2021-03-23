@@ -18,6 +18,14 @@
             android:exported="true"></service>
 
         <activity android:name=".MainActivityFragment" />
+        <receiver
+            android:name=".MyStatusReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.AIRPLANE_MODE"/>
+            </intent-filter>
+        </receiver>
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".adding_food" />

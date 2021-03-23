@@ -2,6 +2,7 @@ package com.example.foodtower
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.IntentFilter
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -22,6 +23,11 @@ class adding_food : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
+
+        var StatusReceiver = MyStatusReceiver()
+        var filter = IntentFilter()
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+        registerReceiver(StatusReceiver,filter)
 
         // mendeklarasikan id image button dan image view dari adding_food.xml
         val addImg = findViewById<ImageButton>(R.id.camera)
