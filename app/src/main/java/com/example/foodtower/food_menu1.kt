@@ -16,12 +16,17 @@ class food_menu1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_menu1)
-
-        button.setOnClickListener {
+        /*button.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity3::class.java)
             var p = person( "Adi",0,"adi@gmail.com")
             Intent2Act.putExtra(EXTRA_PERSON,p)
             startActivity(Intent2Act)
+        }*/
+
+        //membentuk intent dan menjalankan service
+        var voteService = Intent (this, MyService::class.java)
+        button.setOnClickListener {
+            startService(voteService)
         }
 
         val hometop = findViewById<ImageButton>(R.id.hometop)
@@ -35,18 +40,11 @@ class food_menu1 : AppCompatActivity() {
             startActivity(chefmenu)
         }
 
-    }
-
-    fun getAlertDialog(view: View) {
-        var Vote = AlertDialog.Builder(this)
-            .setTitle("Vote")
-            .setMessage("Apakah Anda ingin Vote?")
-            .setPositiveButton("Yes",DialogInterface.OnClickListener { dialogInterface, i ->
-                Toast.makeText(this,"Vote Berhasil", Toast.LENGTH_SHORT).show()
-            })
-            .setNegativeButton("No",DialogInterface.OnClickListener { dialogInterface, i ->
-                Toast.makeText(this,"",Toast.LENGTH_SHORT).show()
-            })
-        Vote.show()
+        /*button.setOnClickListener {
+            var Intent2Act = Intent(this,MainActivity3::class.java)
+            var p = person( "Adi",0,"adi@gmail.com")
+            Intent2Act.putExtra(EXTRA_PERSON,p)
+            startActivity(Intent2Act)
+        }*/
     }
 }
