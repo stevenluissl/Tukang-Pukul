@@ -22,6 +22,8 @@ class MainActivityFragment : AppCompatActivity(), InterfaceData {
             .beginTransaction().replace(R.id.FragmentContainer, fragmentA).commit()
     }
 
+
+
     override fun KirimData(editText: String) {
         //menambahkan/mengimplementasikan Bundle
         val bundle = Bundle()
