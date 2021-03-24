@@ -28,7 +28,7 @@ class food_menu1 : AppCompatActivity() {
         button.setOnClickListener {
             startService(voteService)
         }
-//asdf
+
         val hometop = findViewById<ImageButton>(R.id.hometop)
         hometop?.setOnClickListener {
             val homepage = Intent(this@food_menu1,homepage::class.java)
