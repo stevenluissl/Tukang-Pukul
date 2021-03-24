@@ -55,6 +55,11 @@ class adding_food : AppCompatActivity() {
             startActivity(fragment1)
         }
 
+        recevier.setOnClickListener {
+            val reciever2 = Intent(this, reciever2::class.java)
+            startActivity(reciever2)
+        }
+
         button4.setOnClickListener {
             var Intent2Act = Intent(this,MainActivity2::class.java)
             Intent2Act.putExtra(EXTRA_NAMA,"Adi")
