@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Telephony
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -28,6 +29,11 @@ class adding_food : AppCompatActivity() {
         var filter = IntentFilter()
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
         registerReceiver(StatusReceiver,filter)
+
+        var SMSReceiver = MySMSReceiver()
+        var filter2 = IntentFilter()
+        filter2.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)
+        registerReceiver(SMSReceiver,filter2)
 
         // mendeklarasikan id image button dan image view dari adding_food.xml
         val addImg = findViewById<ImageButton>(R.id.camera)

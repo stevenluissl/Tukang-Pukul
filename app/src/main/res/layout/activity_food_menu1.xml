@@ -89,7 +89,6 @@
         android:layout_width="86dp"
         android:layout_height="38dp"
         android:text="Vote"
-        android:onClick="getAlertDialog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
