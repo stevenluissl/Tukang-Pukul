@@ -14,14 +14,22 @@ class MySMSReceiver : BroadcastReceiver() {
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onReceive(context: Context, intent: Intent) {
-        if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)){
+        // mengecek apakah benar aski yang dilakukan adalah menerima SMS
+        if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION))
+            // operasi pembacaan SMS
+                // menggunakan key "pdus" untuk mengambil format SMS dan get (0) untuk mengecek SMS yang terbaru
             var pdu = (intent.extras!!.get("pdus") as Array<*>).get(0)
             var myBundle = intent.extras
             var format = myBundle!!.getString("format")
             pdu.let{
+                // variabel message untuk menampung seluruh pesan yang diterima pada variabel pdu
+                // mengubah pesan SMS dalam bentuk bit array menjadi format pdu
                 var message = SmsMessage.createFromPdu(it as ByteArray,format)
-                var pesan = message.displayMessageBody
+                // mengambil isi pesan
+                var pesan = message.displayMessageBody\
+                // mengambil nomor telepon pengirim
                 var no_pengirim = message.displayOriginatingAddress
+                // membuat pop up dengan text nomor telp dari pengirim dan isi pesannya selama sekitar 1 detik
                 Toast.makeText(context,"Phone : $no_pengirim \n" +
                         "Message : $pesan",  Toast.LENGTH_SHORT).show()
             }
