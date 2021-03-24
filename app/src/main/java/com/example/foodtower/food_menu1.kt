@@ -24,7 +24,7 @@ class food_menu1 : AppCompatActivity() {
         }*/
 
         //membentuk intent dan menjalankan service
-        var voteService = Intent (this,@MyService::class.java)
+        var voteService = Intent (this, MyService::class.java)
         button.setOnClickListener {
             startService(voteService)
         }
