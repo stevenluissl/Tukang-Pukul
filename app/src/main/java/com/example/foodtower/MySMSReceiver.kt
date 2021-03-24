@@ -17,7 +17,7 @@ class MySMSReceiver : BroadcastReceiver() {
         if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)){
             var pdu = (intent.extras!!.get("pdus") as Array<*>).get(0)
             var myBundle = intent.extras
-            var format = myBundle?.getString("format")
+            var format = myBundle!!.getString("format")
             pdu.let{
                 var message = SmsMessage.createFromPdu(it as ByteArray,format)
                 var pesan = message.displayMessageBody
