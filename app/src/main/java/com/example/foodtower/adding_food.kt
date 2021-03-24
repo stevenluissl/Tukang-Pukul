@@ -47,7 +47,7 @@ class adding_food : AppCompatActivity() {
                 val bitmap = processBitMap(strURL)
                 //update image dilakukan melalui viewImg.post
                 viewImg.post {
-                    //data gamabar diambil dari bitmap
+                    //data gambar diambil dari bitmap
                     viewImg.setImageBitmap(bitmap);
                 }
             }).start()
