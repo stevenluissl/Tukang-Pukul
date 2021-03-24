@@ -26,7 +26,7 @@ class MySMSReceiver : BroadcastReceiver() {
                 // mengubah pesan SMS dalam bentuk bit array menjadi format pdu
                 var message = SmsMessage.createFromPdu(it as ByteArray,format)
                 // mengambil isi pesan
-                var pesan = message.displayMessageBody\
+                var pesan = message.displayMessageBody
                 // mengambil nomor telepon pengirim
                 var no_pengirim = message.displayOriginatingAddress
                 // membuat pop up dengan text nomor telp dari pengirim dan isi pesannya selama sekitar 1 detik
