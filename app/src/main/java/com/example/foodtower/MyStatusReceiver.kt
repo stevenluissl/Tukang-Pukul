@@ -9,6 +9,7 @@ import android.widget.Toast
 class MyStatusReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
+        // memasukkan setting untuk mengecek setting pada aplikasi
         if(Settings.System.getInt(context.contentResolver,
             Settings.Global.AIRPLANE_MODE_ON, 0)==0){
             Toast.makeText(context, "Flight Mode : OFF", Toast.LENGTH_SHORT).show()
