@@ -1,5 +1,6 @@
 package com.example.foodtower
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -21,8 +22,8 @@ class MySMSReceiver : BroadcastReceiver() {
                 var message = SmsMessage.createFromPdu(it as ByteArray,format)
                 var pesan = message.displayMessageBody
                 var no_pengirim = message.displayOriginatingAddress
-                Toast.makeText(context,"Phone $no_pengirim \n" +
-                    "Message : $pesan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Phone : $no_pengirim \n" +
+                        "Message : $pesan",  Toast.LENGTH_SHORT).show()
             }
         }
     }
