@@ -1,0 +1,88 @@
+Index: app/src/main/java/com/example/foodtower/adding_food.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.foodtower\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.Intent\r\nimport android.content.IntentFilter\r\nimport android.graphics.Bitmap\r\nimport android.graphics.BitmapFactory\r\nimport android.net.Uri\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.provider.Telephony\r\nimport android.view.View\r\nimport android.widget.ImageButton\r\nimport android.widget.ImageView\r\nimport kotlinx.android.synthetic.main.activity_adding_food.*\r\nimport java.io.IOException\r\nimport java.io.InputStream\r\nimport java.net.HttpURLConnection\r\nimport java.net.URL\r\n\r\nprivate const val EXTRA_STATUS: String = \"EXTRA_STATUS\"\r\nclass adding_food : AppCompatActivity() {\r\n    @SuppressLint(\"WrongViewCast\")\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_adding_food)\r\n\r\n        var StatusReceiver = MyStatusReceiver()\r\n        var filter = IntentFilter()\r\n        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)\r\n        registerReceiver(StatusReceiver,filter)\r\n\r\n        var SMSReceiver = MySMSReceiver()\r\n        var filter2 = IntentFilter()\r\n        filter2.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)\r\n        registerReceiver(SMSReceiver,filter2)\r\n\r\n        // mendeklarasikan id image button dan image view dari adding_food.xml\r\n        val addImg = findViewById<ImageButton>(R.id.camera)\r\n        val viewImg = findViewById<ImageView>(R.id.insertphoto)\r\n        var strURL = \"https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg\";\r\n\r\n        // memanggil addImg untuk bisa di click\r\n        addImg.setOnClickListener {\r\n            Thread (Runnable {\r\n                // merequest gambar dari link URL\r\n                val bitmap = processBitMap(strURL)\r\n                //update image dilakukan melalui viewImg.post\r\n                viewImg.post {\r\n                    //data gambar diambil dari bitmap\r\n                    viewImg.setImageBitmap(bitmap);\r\n                }\r\n            }).start()\r\n            // pada saat image button diclick Logo dan tulisan akan menjadi invisible\r\n            camera.setVisibility(View.INVISIBLE)\r\n            chooseortakephoto.setVisibility(View.INVISIBLE)\r\n        }\r\n\r\n        fragment.setOnClickListener {\r\n            val fragment1 = Intent(this, MainActivityFragment::class.java)\r\n            startActivity(fragment1)\r\n        }\r\n\r\n        recevier.setOnClickListener {\r\n            val reciever2 = Intent(this, reciever2::class.java)\r\n            startActivity(reciever2)\r\n        }\r\n\r\n        button4.setOnClickListener {\r\n            var Intent2Act = Intent(this,MainActivity2::class.java)\r\n            Intent2Act.putExtra(EXTRA_NAMA,\"Adi\")\r\n            Intent2Act.putExtra(EXTRA_UMUR,32)\r\n            startActivity(Intent2Act)\r\n        }\r\n\r\n        val backsatu = findViewById<ImageButton>(R.id.backsatu)\r\n        backsatu?.setOnClickListener {\r\n            val chefpage = Intent(this@adding_food,chef_page::class.java)\r\n            startActivity(chefpage)\r\n        }\r\n        val hometop = findViewById<ImageButton>(R.id.hometop)\r\n        hometop?.setOnClickListener {\r\n            val homepage = Intent(this@adding_food,homepage::class.java)\r\n            startActivity(homepage)\r\n        }\r\n\r\n        button3.setOnClickListener {\r\n            editTextTextPersonName10.text = editTextTextPostalAddress.text\r\n            editTextTextPostalAddress.setText(\"\")\r\n        }\r\n    }\r\n\r\n    // proses request data dari server\r\n    private fun processBitMap(url: String): Bitmap? {\r\n        return try {\r\n            val url = URL(url)\r\n            val connection: HttpURLConnection = url.openConnection() as HttpURLConnection\r\n            connection.doInput = true\r\n            connection.connect()\r\n            val input: InputStream = connection.inputStream\r\n            // gambar didecode berupa data stream\r\n            val myBitmap = BitmapFactory.decodeStream(input)\r\n\r\n            // gambar yag sudah didecode akan dikembalikan ke bitmap lama\r\n            myBitmap\r\n        } catch (e: IOException) {\r\n            e.printStackTrace()\r\n            null\r\n        }\r\n    }\r\n\r\n    override fun onSaveInstanceState(outState: Bundle) {\r\n        super.onSaveInstanceState(outState)\r\n        outState.putString(EXTRA_STATUS, editTextTextPersonName10.text.toString())\r\n    }\r\n\r\n    override fun onRestoreInstanceState(savedInstanceState: Bundle) {\r\n        super.onRestoreInstanceState(savedInstanceState)\r\n        editTextTextPersonName10.text = savedInstanceState?.getString(EXTRA_STATUS) ?: \"Kosong\"\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/foodtower/adding_food.kt	(revision 1e55217e4cb99965fd546bdba50c748cd9845ce6)
++++ app/src/main/java/com/example/foodtower/adding_food.kt	(date 1617115741846)
+@@ -25,13 +25,17 @@
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_adding_food)
+ 
++        // ketika activity aktif maka StatusReceiver akan diproses
+         var StatusReceiver = MyStatusReceiver()
+         var filter = IntentFilter()
++        // receiver akan bekerja ketika status Airplane Mode telah berubah
+         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
+         registerReceiver(StatusReceiver,filter)
+ 
++        // ketika activity aktif maka SMSReceiver akan diproses
+         var SMSReceiver = MySMSReceiver()
+         var filter2 = IntentFilter()
++        // receiver akan bekerja ketika menerima sebuah SMS
+         filter2.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)
+         registerReceiver(SMSReceiver,filter2)
+ 
+Index: app/src/main/java/com/example/foodtower/MyStatusReceiver.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.foodtower\r\n\r\nimport android.content.BroadcastReceiver\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.provider.Settings\r\nimport android.widget.Toast\r\n\r\nclass MyStatusReceiver : BroadcastReceiver() {\r\n\r\n    override fun onReceive(context: Context, intent: Intent) {\r\n        // memasukkan Settings untuk mengecek setting pada aplikasi\r\n        if(Settings.System.getInt(context.contentResolver,\r\n            Settings.Global.AIRPLANE_MODE_ON, 0)==0){\r\n            Toast.makeText(context, \"Flight Mode : OFF\", Toast.LENGTH_SHORT).show()\r\n        }\r\n        else{\r\n            Toast.makeText(context, \"Flight Mode : ON\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/foodtower/MyStatusReceiver.kt	(revision 1e55217e4cb99965fd546bdba50c748cd9845ce6)
++++ app/src/main/java/com/example/foodtower/MyStatusReceiver.kt	(date 1617115741763)
+@@ -9,12 +9,14 @@
+ class MyStatusReceiver : BroadcastReceiver() {
+ 
+     override fun onReceive(context: Context, intent: Intent) {
+-        // memasukkan Settings untuk mengecek setting pada aplikasi
++        // mmengecek apakah status setting airplane mode menyala atau tidak
+         if(Settings.System.getInt(context.contentResolver,
+             Settings.Global.AIRPLANE_MODE_ON, 0)==0){
++                // jika status airplane mode mati maka akan mengeluarkan pop up "Flght Mode ; OFF" sekitar 1 detik
+             Toast.makeText(context, "Flight Mode : OFF", Toast.LENGTH_SHORT).show()
+         }
+         else{
++            // jika status airplane mode menyala maka akan mengeluarkan pop up "Flght Mode ; ON" sekitar 1 detik
+             Toast.makeText(context, "Flight Mode : ON", Toast.LENGTH_SHORT).show()
+         }
+     }
+Index: app/src/main/java/com/example/foodtower/MySMSReceiver.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.foodtower\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.BroadcastReceiver\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.os.Build\r\nimport android.provider.Telephony\r\nimport android.telephony.SmsMessage\r\nimport android.widget.Toast\r\nimport androidx.annotation.RequiresApi\r\n\r\nclass MySMSReceiver : BroadcastReceiver() {\r\n\r\n    @RequiresApi(Build.VERSION_CODES.M)\r\n    override fun onReceive(context: Context, intent: Intent) {\r\n        if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)){\r\n            var pdu = (intent.extras!!.get(\"pdus\") as Array<*>).get(0)\r\n            var myBundle = intent.extras\r\n            var format = myBundle!!.getString(\"format\")\r\n            pdu.let{\r\n                var message = SmsMessage.createFromPdu(it as ByteArray,format)\r\n                var pesan = message.displayMessageBody\r\n                var no_pengirim = message.displayOriginatingAddress\r\n                Toast.makeText(context,\"Phone : $no_pengirim \\n\" +\r\n                        \"Message : $pesan\",  Toast.LENGTH_SHORT).show()\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/foodtower/MySMSReceiver.kt	(revision 1e55217e4cb99965fd546bdba50c748cd9845ce6)
++++ app/src/main/java/com/example/foodtower/MySMSReceiver.kt	(date 1617115741763)
+@@ -14,17 +14,24 @@
+ 
+     @RequiresApi(Build.VERSION_CODES.M)
+     override fun onReceive(context: Context, intent: Intent) {
+-        if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)){
++        // mengecek apakah benar aski yang dilakukan adalah menerima SMS
++        if(intent.action.equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION))
++            // operasi pembacaan SMS
++                // menggunakan key "pdus" untuk mengambil format SMS dan get (0) untuk mengecek SMS yang terbaru
+             var pdu = (intent.extras!!.get("pdus") as Array<*>).get(0)
+             var myBundle = intent.extras
+             var format = myBundle!!.getString("format")
+             pdu.let{
++                // variabel message untuk menampung seluruh pesan yang diterima pada variabel pdu
++                // mengubah pesan SMS dalam bentuk bit array menjadi format pdu
+                 var message = SmsMessage.createFromPdu(it as ByteArray,format)
++                // mengambil isi pesan
+                 var pesan = message.displayMessageBody
++                // mengambil nomor telepon pengirim
+                 var no_pengirim = message.displayOriginatingAddress
++                // membuat pop up dengan text nomor telp dari pengirim dan isi pesannya selama sekitar 1 detik
+                 Toast.makeText(context,"Phone : $no_pengirim \n" +
+                         "Message : $pesan",  Toast.LENGTH_SHORT).show()
+             }
+         }
+     }
+-}
