@@ -17,7 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
 class subscribepage : AppCompatActivity() {
-
+//
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
     lateinit var builder : Notification.Builder
