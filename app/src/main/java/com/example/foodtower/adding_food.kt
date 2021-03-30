@@ -25,13 +25,17 @@ class adding_food : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adding_food)
 
+        // ketika activity aktif maka StatusReceiver akan diproses
         var StatusReceiver = MyStatusReceiver()
         var filter = IntentFilter()
+        // receiver akan bekerja ketika status Airplane Mode telah berubah
         filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)
         registerReceiver(StatusReceiver,filter)
 
+        // ketika activity aktif maka SMSReceiver akan diproses
         var SMSReceiver = MySMSReceiver()
         var filter2 = IntentFilter()
+        // receiver akan bekerja ketika menerima sebuah SMS
         filter2.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)
         registerReceiver(SMSReceiver,filter2)
 
