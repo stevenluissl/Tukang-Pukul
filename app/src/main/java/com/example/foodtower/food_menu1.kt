@@ -16,12 +16,6 @@ class food_menu1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_menu1)
-        /*button.setOnClickListener {
-            var Intent2Act = Intent(this,MainActivity3::class.java)
-            var p = person( "Adi",0,"adi@gmail.com")
-            Intent2Act.putExtra(EXTRA_PERSON,p)
-            startActivity(Intent2Act)
-        }*/
 
         //membentuk intent dan menjalankan service
         var voteService = Intent (this, MyService::class.java)
