@@ -38,7 +38,8 @@ class subscribepage : AppCompatActivity() {
 
             val intent = Intent (this,LauncherActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-            
+
+            //coding ini akan dijalankan jika versi android yang dijalankan adalah versi Oreo
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(channelID,description,NotificationManager.IMPORTANCE_HIGH)
                 //untuk memunculkan cahaya
@@ -63,6 +64,8 @@ class subscribepage : AppCompatActivity() {
                     .setContentIntent(pendingIntent)
 
             }
+                
+            //coding ini akan dijalankan jika versi android yang dijalankan merupakan versi yang lain
             else{
                 builder = Notification.Builder(this)
                     .setContentTitle("Code Android")
