@@ -15,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_subscribepage.*
+import me.leolin.shortcutbadger.ShortcutBadger
 
 class subscribepage : AppCompatActivity() {
 
@@ -45,6 +46,7 @@ class subscribepage : AppCompatActivity() {
                 getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT)
             }*/
 
+            //coding ini akan dijalankan jika versi android yang dijalankan adalah versi Oreo
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(channelID,description,NotificationManager.IMPORTANCE_HIGH)
                 //untuk memunculkan cahaya
@@ -54,6 +56,10 @@ class subscribepage : AppCompatActivity() {
                 //membuat getaran jika ada notifikasi yang masuk
                 notificationChannel.enableVibration(false)
                 notificationManager.createNotificationChannel(notificationChannel)
+                //setsShowBadge berfungsi untuk memunculkan Dot Notification
+                //jika true maka Dot Notification tidak akan ditampilkan
+                //jika false maka Dot Notification akan ditampilkan pada icon aplikasi
+                notificationChannel.setShowBadge(false)
 
                 builder = Notification.Builder(this,channelID)
                         //membuat title notifikasi
