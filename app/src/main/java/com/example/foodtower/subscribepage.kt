@@ -48,6 +48,10 @@ class subscribepage : AppCompatActivity() {
                 //membuat getaran jika ada notifikasi yang masuk
                 notificationChannel.enableVibration(false)
                 notificationManager.createNotificationChannel(notificationChannel)
+                //setsShowBadge berfungsi untuk memunculkan Dot Notification
+                //jika true maka Dot Notification tidak akan ditampilkan
+                //jika false maka Dot Notification akan ditampilkan pada icon aplikasi
+                notificationChannel.setShowBadge(false)
 
                 builder = Notification.Builder(this,channelID)
                         //membuat title notifikasi
