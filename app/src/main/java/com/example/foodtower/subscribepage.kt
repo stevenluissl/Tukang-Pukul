@@ -18,11 +18,14 @@ import kotlinx.android.synthetic.main.activity_subscribepage.*
 import me.leolin.shortcutbadger.ShortcutBadger
 
 class subscribepage : AppCompatActivity() {
-//
+
+//notification manager untuk memunculkan atau menghilangkan notification
     lateinit var notificationManager: NotificationManager
+//notificationchannel kita bisa mengdisable atau able kan notifikasi di pengaturan
     lateinit var notificationChannel: NotificationChannel
     lateinit var builder : Notification.Builder
     private val channelID = "com.example.vicky.notificationexample"
+//notifikasi description akan menampilkan kepada pengguna
     private val description = "Test Notification"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,13 +41,18 @@ class subscribepage : AppCompatActivity() {
             
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(channelID,description,NotificationManager.IMPORTANCE_HIGH)
+                //untuk memunculkan cahaya
                 notificationChannel.enableLights(true)
+                //untuk memunculkan warna pada cahaya
                 notificationChannel.lightColor = Color.GREEN
+                //membuat getaran jika ada notifikasi yang masuk
                 notificationChannel.enableVibration(false)
                 notificationManager.createNotificationChannel(notificationChannel)
 
                 builder = Notification.Builder(this,channelID)
+                        //membuat title notifikasi
                     .setContentTitle("Code Android")
+                        //membuat text notifikasi
                     .setContentText("Test Notification")
                     .setSmallIcon(R.drawable.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
@@ -59,7 +67,7 @@ class subscribepage : AppCompatActivity() {
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
             }
-
+            //notification akan di panggil dan juga harus memiliki id yang unik juga
             notificationManager.notify(1234,builder.build())
 
         }
