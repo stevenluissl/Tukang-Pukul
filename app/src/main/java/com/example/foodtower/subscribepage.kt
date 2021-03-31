@@ -38,6 +38,13 @@ class subscribepage : AppCompatActivity() {
             val intent = Intent (this,LauncherActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
+            val intent2 = Intent (this,chefmenu::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
+            val ActionPendingIntent : PendingIntent = PendingIntent.getActivity(this, 0, intent2, 0)
+            /*val pendingIntent2 = TaskStackBuilder.create(this).run {
+                addNextIntentWithParentStack(intent2)
+                getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT)
+            }*/
+
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(channelID,description,NotificationManager.IMPORTANCE_HIGH)
                 //untuk memunculkan cahaya
@@ -56,6 +63,8 @@ class subscribepage : AppCompatActivity() {
                     .setSmallIcon(R.drawable.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
+                    //.setContentIntent(pendingIntent2)
+                    .addAction(R.drawable.gmbr1,"View Menu", ActionPendingIntent)
             }
             else{
                 builder = Notification.Builder(this)
@@ -64,6 +73,8 @@ class subscribepage : AppCompatActivity() {
                     .setSmallIcon(R.drawable.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
+                    //.setContentIntent(pendingIntent2)
+                    .addAction(R.drawable.gmbr1,"View Menu", ActionPendingIntent)
             }
             //notification akan di panggil dan juga harus memiliki id yang unik juga
             notificationManager.notify(1234,builder.build())
