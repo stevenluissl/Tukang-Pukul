@@ -15,6 +15,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_subscribepage.*
+import me.leolin.shortcutbadger.ShortcutBadger
 
 class subscribepage : AppCompatActivity() {
 //
@@ -34,7 +35,7 @@ class subscribepage : AppCompatActivity() {
 
             val intent = Intent (this,LauncherActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-
+            
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 notificationChannel = NotificationChannel(channelID,description,NotificationManager.IMPORTANCE_HIGH)
                 notificationChannel.enableLights(true)
@@ -48,6 +49,7 @@ class subscribepage : AppCompatActivity() {
                     .setSmallIcon(R.drawable.ic_launcher_round)
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
+
             }
             else{
                 builder = Notification.Builder(this)
@@ -72,7 +74,10 @@ class subscribepage : AppCompatActivity() {
             val homepage = Intent(this@subscribepage,homepage::class.java)
             startActivity(homepage)
         }
+
+
     }
+
 
 
 
