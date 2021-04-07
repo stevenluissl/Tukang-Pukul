@@ -36,7 +36,7 @@ class chef_page : AppCompatActivity() {
             //membuat variabel baru untuk mengecek seluruh body dari API
             var all = response.body
 
-            //membuat variabel abru untuk memanggil Total Hits dari JSON
+            //membuat variabel baru untuk memanggil Total Hits dari JSON
             var allres = JSONObject(all).getString("total_hits")
 
             //menampilkan String dari total hits
