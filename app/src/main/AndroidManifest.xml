@@ -4,9 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,24 +14,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".BroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
         <service
             android:name=".FoodRec"
             android:enabled="true"
             android:exported="true"
-            android:permission="android.permission.BIND_JOB_SERVICE">
-        </service>
+            android:permission="android.permission.BIND_JOB_SERVICE"></service>
+
         <activity android:name=".MainActivityFragment" />
+
         <receiver
             android:name=".MySMSReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-                <action android:name="android.provider.Telephony.SMS_READ"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <action android:name="android.provider.Telephony.SMS_READ" />
             </intent-filter>
         </receiver>
         <receiver
@@ -42,6 +48,7 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
+
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
         <activity android:name=".adding_food" />

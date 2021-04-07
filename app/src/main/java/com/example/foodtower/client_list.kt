@@ -1,14 +1,36 @@
 package com.example.foodtower
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_client_list.*
+import java.util.*
 
 class client_list : AppCompatActivity() {
+    var mAlarmManager : AlarmManager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_list)
+
+        mAlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        buttonconfirm.setOnClickListener{
+            var alarmTimer = Calendar.getInstance()
+            alarmTimer.add(Calendar.SECOND,10)
+
+            var sendIntent = Intent(this,BroadcastReceiver::class.java)
+
+            var mPendingIntent = PendingIntent.getBroadcast(this,101,sendIntent,0)
+
+            mAlarmManager?.set(AlarmManager.RTC,alarmTimer.timeInMillis,mPendingIntent)
+            Toast.makeText(this,"Start",Toast.LENGTH_SHORT).show()
+        }
+
 
         val backsatu = findViewById<ImageButton>(R.id.backsatu)
         backsatu?.setOnClickListener {
