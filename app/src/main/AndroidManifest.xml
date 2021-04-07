@@ -18,7 +18,12 @@
             android:name=".MyService"
             android:enabled="true"
             android:exported="true"></service>
-
+        <service
+            android:name=".FoodRec"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE">
+        </service>
         <activity android:name=".MainActivityFragment" />
         <receiver
             android:name=".MySMSReceiver"
