@@ -3,14 +3,14 @@ package com.example.foodtower
 import android.app.job.JobParameters
 import android.app.job.JobService
 import android.util.Log
-import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpResponseHandler
-import cz.msebera.android.httpclient.Header
+import com.mashape.unirest.http.Unirest
+import org.jetbrains.anko.doAsync
+import org.json.JSONObject
 
 
 class FoodRec : JobService() {
-    val AppID = "04feeb48145bdcd5832c07e9a2d778ac"
-    val Kota = "Medan"
+    /*val AppID = "04feeb48145bdcd5832c07e9a2d778ac"
+    val Kota = "Medan"*/
     override fun onStartJob(params: JobParameters?): Boolean {
         Log.w("TAG","Mulai")
         return true
@@ -21,9 +21,8 @@ class FoodRec : JobService() {
         getFoodRec(params)
         return true
     }
-
     private fun getFoodRec(params: JobParameters?) {
-        var client = AsyncHttpClient()
+        /*var client = AsyncHttpClient()
         var url = "http://api.openweathermap.org/data/2.5/weather?q=$Kota&AppID=$AppID"
         val charSet = Charsets.UTF_8
         var handler = object : AsyncHttpResponseHandler(){
@@ -47,6 +46,8 @@ class FoodRec : JobService() {
                 jobFinished(params, true)
             }
         }
-        client.get(url,handler)
+        client.get(url,handler)*/
+
     }
+
 }
