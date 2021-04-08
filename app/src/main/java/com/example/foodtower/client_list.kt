@@ -16,13 +16,14 @@ class client_list : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_client_list)
-
+//alarm manager untuk mengset alarm yang akan di notifikasi jika waktu tersebut sudah habis
         mAlarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
         buttonconfirm.setOnClickListener{
             var alarmTimer = Calendar.getInstance()
+//mengset alarm selama 10 detik jika sesudah 10 detik maka akan muncul notifikasi
             alarmTimer.add(Calendar.SECOND,10)
-
+//menjalankan sendintent di broadcastreceiver
             var sendIntent = Intent(this,BroadcastReceiver::class.java)
 
             var mPendingIntent = PendingIntent.getBroadcast(this,101,sendIntent,0)
