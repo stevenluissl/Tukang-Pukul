@@ -3,9 +3,9 @@ package com.example.foodtower
 import android.app.job.JobParameters
 import android.app.job.JobService
 import android.util.Log
-import com.mashape.unirest.http.Unirest
-import org.jetbrains.anko.doAsync
-import org.json.JSONObject
+import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpResponseHandler
+import cz.msebera.android.httpclient.Header
 
 
 class FoodRec : JobService() {
@@ -22,8 +22,8 @@ class FoodRec : JobService() {
         return true
     }
     private fun getFoodRec(params: JobParameters?) {
-        /*var client = AsyncHttpClient()
-        var url = "http://api.openweathermap.org/data/2.5/weather?q=$Kota&AppID=$AppID"
+        var client = AsyncHttpClient()
+        var url = "\"https://nutritionix-api.p.rapidapi.com/v1_1/search/KFC?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat\""
         val charSet = Charsets.UTF_8
         var handler = object : AsyncHttpResponseHandler(){
             override fun onSuccess(
@@ -46,7 +46,7 @@ class FoodRec : JobService() {
                 jobFinished(params, true)
             }
         }
-        client.get(url,handler)*/
+        client.get(url,handler)
 
     }
 
