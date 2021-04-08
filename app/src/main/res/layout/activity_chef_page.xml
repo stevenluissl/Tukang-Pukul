@@ -203,23 +203,24 @@
         android:id="@+id/foodrec"
         android:layout_width="194dp"
         android:layout_height="41dp"
-        android:text="Food Recommendation"
+        android:text="Food Score"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="86dp"
-        android:layout_height="28dp"
-        android:text="TextView"
+        android:layout_width="43dp"
+        android:layout_height="20dp"
+        android:text="Text"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.906" />
 </androidx.constraintlayout.widget.ConstraintLayout>
