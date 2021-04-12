@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
 class subscribepage : AppCompatActivity() {
@@ -38,10 +39,15 @@ class subscribepage : AppCompatActivity() {
             val intent = Intent (this,LauncherActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
+            val notfyIntent = Intent(this, chefmenu::class.java)
+            val mPendingIntent = TaskStackBuilder.create(this)
+                .addNextIntentWithParentStack(notfyIntent)
+                .getPendingIntent(37, PendingIntent.FLAG_UPDATE_CURRENT)
+
             //saat melakukan aksi pada notifikasi, akan langsung difoward ke halaman menu chef
-            val intent2 = Intent (this,chefmenu::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
+            //val intent2 = Intent (this,chefmenu::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
             //pending intent berfungsi untuk meng-execute notification action saat berada di app lain
-            val ActionPendingIntent : PendingIntent = PendingIntent.getActivity(this, 0, intent2, 0)
+            //val ActionPendingIntent : PendingIntent = PendingIntent.getActivity(this, 0, intent2, 0)
 
             //coding ini akan dijalankan jika versi android yang dijalankan adalah versi Oreo
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -67,7 +73,7 @@ class subscribepage : AppCompatActivity() {
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
                     //action pada notification yang akan meneruskan ke halaman menu
-                    .addAction(R.drawable.gmbr1,"View Menu", ActionPendingIntent)
+                    .addAction(R.drawable.gmbr1,"View Menu", mPendingIntent)
             }
             else{
                 builder = Notification.Builder(this)
@@ -77,7 +83,7 @@ class subscribepage : AppCompatActivity() {
                     .setLargeIcon(BitmapFactory.decodeResource(this.resources,R.drawable.ic_launcher_round))
                     .setContentIntent(pendingIntent)
                     //action pada notification yang akan meneruskan ke halaman menu
-                    .addAction(R.drawable.gmbr1,"View Menu", ActionPendingIntent)
+                    .addAction(R.drawable.gmbr1,"View Menu", mPendingIntent)
             }
             //notification akan di panggil dan juga harus memiliki id yang unik juga
             notificationManager.notify(1234,builder.build())

@@ -9,7 +9,7 @@ import cz.msebera.android.httpclient.Header
 import org.json.JSONObject
 
 
-/*class FoodRec : JobService() {
+class FoodRec : JobService() {
     val AppID = "04feeb48145bdcd5832c07e9a2d778ac"
     val Kota = "Medan"
     override fun onStartJob(params: JobParameters?): Boolean {
@@ -50,4 +50,4 @@ import org.json.JSONObject
 
     }
 
-}*/
+}
