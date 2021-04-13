@@ -39,13 +39,14 @@ class subscribepage : AppCompatActivity() {
             val intent = Intent (this,LauncherActivity::class.java)
             val pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 
-            val notfyIntent = Intent(this, chefmenu::class.java)
+            //saat melakukan aksi pada notifikasi, akan langsung difoward ke halaman menu chef
+            val intent2 = Intent (this,chefmenu::class.java).apply{ flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK }
+            //mengatur backstack
             val mPendingIntent = TaskStackBuilder.create(this)
-                .addNextIntentWithParentStack(notfyIntent)
+                .addNextIntentWithParentStack(intent2)
                 .getPendingIntent(37, PendingIntent.FLAG_UPDATE_CURRENT)
 
-            //saat melakukan aksi pada notifikasi, akan langsung difoward ke halaman menu chef
-            //val intent2 = Intent (this,chefmenu::class.java).apply { flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK }
             //pending intent berfungsi untuk meng-execute notification action saat berada di app lain
             //val ActionPendingIntent : PendingIntent = PendingIntent.getActivity(this, 0, intent2, 0)
 
