@@ -25,6 +25,16 @@ class chef_page : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chef_page)
 
+        /*
+        var serviceComponent = ComponentName(this,FoodRec::class.java)
+        var myJobInfo = JobInfo.Builder(JobSchedulerID, serviceComponent)
+            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+            .setRequiresDeviceIdle(false)
+            .setRequiresCharging(false)
+            .setPeriodic(3*60*1000)
+        var JobFood = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+        JobFood.schedule(myJobInfo.build())
+        Toast.makeText(this,"Job Service Berjalan", Toast.LENGTH_SHORT).show()
         doAsync {
             var response =
                 //menggunakan Unirest untuk mendapatkan API dari API Nutrisi
@@ -44,7 +54,7 @@ class chef_page : AppCompatActivity() {
                 textView4.text = allres.toString()
             }
 
-        }
+        }*/
 
         buttonchef.setOnClickListener {
             val intent = Intent(this, client_list::class.java)
@@ -80,14 +90,23 @@ class chef_page : AppCompatActivity() {
     }
 
     private fun startJob() {
-        var serviceComponent = ComponentName(this,FoodRec::class.java)
-        var myJobInfo = JobInfo.Builder(JobSchedulerID, serviceComponent)
-            .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-            .setRequiresDeviceIdle(false)
-            .setRequiresCharging(false)
-            .setPeriodic(3*60*1000)
-        var JobFood = getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
-        JobFood.schedule(myJobInfo.build())
-        Toast.makeText(this,"Job Service Berjalan", Toast.LENGTH_SHORT).show()
+        doAsync {
+            var response =
+                //menggunakan Unirest untuk mendapatkan API dari API Nutrisi
+                Unirest.get("https://nutritionix-api.p.rapidapi.com/v1_1/search/kfc?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat")
+                    .header("x-rapidapi-key", "af7381486dmsh0c1e11bcfd96e69p105074jsn87cb03d405c2")
+                    .header("x-rapidapi-host", "nutritionix-api.p.rapidapi.com")
+                    .asString()
+
+            //membuat variabel baru untuk mengecek seluruh body dari API
+            var all = response.body
+
+            //membuat variabel baru untuk memanggil Total Hits dari JSON
+            var allres = JSONObject(all).getString("total_hits")
+
+            //menampilkan String dari total hits
+            textView4.text = allres.toString()
+
+        }
     }
 }
