@@ -2,22 +2,27 @@ package com.example.foodtower
 
 import android.app.*
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.LauncherActivityInfo
-import android.graphics.Bitmap
+import android.database.Cursor
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.provider.ContactsContract
 import android.widget.ImageButton
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.TaskStackBuilder
+import androidx.loader.app.LoaderManager
+import androidx.loader.content.CursorLoader
+import androidx.loader.content.Loader
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
-class subscribepage : AppCompatActivity() {
+class subscribepage : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> {
+
+    var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
+    var noTelp = ContactsContract.CommonDataKinds.Phone.NUMBER
+    var stats = ContactsContract.Contacts.EXTRA_ADDRESS_BOOK_INDEX
+
+    var listContact : MutableList<Subs> = ArrayList()
 
 //notification manager untuk memunculkan atau menghilangkan notification
     lateinit var notificationManager: NotificationManager
@@ -103,6 +108,33 @@ class subscribepage : AppCompatActivity() {
         }
     }
 
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+        var contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI
+        var data = arrayOf(DisplayName,noTelp,stats)
+        return CursorLoader (this, contactUri, data, null,
+            null, "$DisplayName DESC")
+    }
+
+    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+        listContact.clear()
+        if(data != null) {
+            data.moveToFirst()
+            while (!data.isAfterLast) {
+                listContact.add(
+                    Subs(
+                        data.getString(data.getColumnIndex(DisplayName)),
+                        data.getString(data.getColumnIndex(noTelp))
+                    )
+                )
+                data.moveToNext()
+            }
+            var contactAdapter = RecycleView
+        }
+    }
+
+    override fun onLoaderReset(loader: Loader<Cursor>) {
+        TODO("Not yet implemented")
+    }
 
 
 //    fun getAlertDialog(view: View) {
