@@ -59,8 +59,9 @@
         <activity android:name=".food_menu3" />
         <activity android:name=".food_menu2" />
         <activity android:name=".food_menu1" />
-        <activity android:name=".subscribepage" />
-        <activity android:name=".chefmenu" />
+        <activity android:name=".subscribepage"/>
+        <activity android:name=".chefmenu"
+            android:parentActivityName=".homepage"/>
         <activity android:name=".homepage" />
         <activity android:name=".splashscreen">
             <intent-filter>
