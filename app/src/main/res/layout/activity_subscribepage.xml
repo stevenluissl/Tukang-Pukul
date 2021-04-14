@@ -299,10 +299,10 @@
         android:src="@drawable/rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863" />
+        app:layout_constraintVertical_bias="0.736" />
 
     <TextView
         android:id="@+id/no_rekening"
@@ -357,6 +357,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bca"
         app:layout_constraintVertical_bias="0.446" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Kolom"
+        android:layout_width="105dp"
+        android:layout_height="225dp"
+        tools:layout_editor_absoluteX="204dp"
+        tools:layout_editor_absoluteY="118dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

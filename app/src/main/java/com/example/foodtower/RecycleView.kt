@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_subscribepage.view.*
 
-class myAdapterRecyView (private val contact : List<Subs>) : RecyclerView.Adapter<myHolder>() {
+class RecycleView (private val contact : List<Subs>) : RecyclerView.Adapter<myHolder>() {
     override fun onCreateViewHolder (parent : ViewGroup, viewType : Int): myHolder {
         return myHolder (
             LayoutInflater.from (parent. context)

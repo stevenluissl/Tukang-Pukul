@@ -10,10 +10,12 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.TaskStackBuilder
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
 class subscribepage : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -128,7 +130,10 @@ class subscribepage : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor>
                 )
                 data.moveToNext()
             }
-            var contactAdapter = RecycleView
+            var contactAdapter = RecycleView(listContact)
+            Kolom.apply {
+                layoutManager = LinearLayoutManager(this@Subs)
+            }
         }
     }
 
