@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.TaskStackBuilder
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
@@ -38,6 +37,8 @@ class subscribepage : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscribepage)
+
+        LoaderManager.getInstance(this).initLoader(1, null, this)
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -131,14 +132,15 @@ class subscribepage : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor>
                 data.moveToNext()
             }
             var contactAdapter = RecycleView(listContact)
-            Kolom.apply {
-                layoutManager = LinearLayoutManager(this@Subs)
+            kolom.apply {
+                layoutManager = LinearLayoutManager (this@subscribepage)
+                adapter = contactAdapter
             }
         }
     }
 
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        TODO("Not yet implemented")
+        kolom.adapter?.notifyDataSetChanged()
     }
 
 

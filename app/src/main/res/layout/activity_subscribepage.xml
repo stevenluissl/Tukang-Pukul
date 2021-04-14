@@ -24,12 +24,11 @@
 
     <ImageView
         android:id="@+id/fadetop_subscribe"
-        android:layout_width="569dp"
-        android:layout_height="182dp"
+        android:layout_width="477dp"
+        android:layout_height="131dp"
         android:src="@drawable/fade_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -158,10 +157,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.105" />
 
     <TextView
         android:id="@+id/titik"
@@ -171,10 +170,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.248" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <TextView
         android:id="@+id/titik3"
@@ -184,10 +183,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.223" />
 
     <TextView
         android:id="@+id/titik4"
@@ -197,10 +196,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412" />
+        app:layout_constraintVertical_bias="0.279" />
 
     <TextView
         android:id="@+id/titik5"
@@ -210,10 +209,10 @@
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492" />
+        app:layout_constraintVertical_bias="0.331" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -223,10 +222,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -236,10 +235,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.351" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
@@ -249,10 +248,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintVertical_bias="0.438" />
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
@@ -262,10 +261,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.514" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -275,10 +274,10 @@
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.258" />
+        app:layout_constraintVertical_bias="0.265" />
 
     <TextView
         android:id="@+id/price"
@@ -300,10 +299,10 @@
         android:src="@drawable/rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.881" />
 
     <TextView
         android:id="@+id/no_rekening"
@@ -316,7 +315,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
+        app:layout_constraintVertical_bias="0.701" />
 
     <TextView
         android:id="@+id/namajurumasak"
@@ -327,10 +326,10 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781" />
+        app:layout_constraintVertical_bias="0.761" />
 
     <TextView
         android:id="@+id/bca"
@@ -341,10 +340,9 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fadebottom_subscribe"
-        app:layout_constraintVertical_bias="0.839" />
+        app:layout_constraintVertical_bias="0.86" />
 
     <Button
         android:id="@+id/reqinformation"
@@ -353,10 +351,16 @@
         android:text="Request information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bca"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.811" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/kolom"
+        android:layout_width="40dp"
+        android:layout_height="195dp"
+        tools:layout_editor_absoluteX="194dp"
+        tools:layout_editor_absoluteY="114dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
