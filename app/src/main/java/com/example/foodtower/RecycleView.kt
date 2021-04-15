@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_subscribepage.view.*
+import kotlinx.android.synthetic.main.subscribepage1.view.*
 
 class RecycleView (private val contact : List<Subs>) : RecyclerView.Adapter<myHolder>() {
     override fun onCreateViewHolder (parent : ViewGroup, viewType : Int): myHolder {
@@ -23,8 +23,8 @@ class RecycleView (private val contact : List<Subs>) : RecyclerView.Adapter<myHo
 }
 
 class  myHolder (view : View) : RecyclerView.ViewHolder(view) {
-    private val contactName = view.nama__
-    private val contactNumber = view.phonenumber
+    private val contactName = view.LinearNama
+    private val contactNumber = view.LinearNo
 
     fun bindContact(tmp: Subs) {
         contactName.text = "${contactName.text} : $tmp.nama}"
