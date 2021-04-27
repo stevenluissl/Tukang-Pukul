@@ -9,12 +9,14 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_recycler_view.*
+import kotlinx.android.synthetic.main.subscribepage1.*
 
 class RecyclerView : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> {
 
+    //membuat variabel untuk menunjukkan nama kontak
     var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
+    //membuat variabel untuk menunjukkan nomor telepon
     var noTelp = ContactsContract.CommonDataKinds.Phone.NUMBER
-    var stats = ContactsContract.Contacts.EXTRA_ADDRESS_BOOK_INDEX
 
     var listContact : MutableList<Subs> = ArrayList()
 
@@ -25,34 +27,39 @@ class RecyclerView : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> 
         LoaderManager.getInstance(this).initLoader(1, null, this)
     }
 
+    // mereturn cursor loader dari uri dalam bentuk array dan menampilkan datanya secara ascending
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        var contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI
-        var data = arrayOf(DisplayName,noTelp,stats)
+        var contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+        var data = arrayOf(DisplayName,noTelp)
         return CursorLoader (this, contactUri, data, null,
-            null, "$DisplayName DESC")
+            null, "$DisplayName ASC")
     }
 
-    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+    // membaca data dari kontak
+    override fun onLoadFinished(loader: Loader<Cursor>, tess: Cursor?) {
         listContact.clear()
-        if(data != null) {
-            data.moveToFirst()
-            while (!data.isAfterLast) {
+        if(tess != null) {
+            tess.moveToFirst()
+            while (!tess.isAfterLast) {
                 listContact.add(
                     Subs(
-                        data.getString(data.getColumnIndex(DisplayName)),
-                        data.getString(data.getColumnIndex(noTelp))
+                        tess.getString(tess.getColumnIndex(DisplayName)),
+                        tess.getString(tess.getColumnIndex(noTelp))
                     )
                 )
-                data.moveToNext()
+                tess.moveToNext()
             }
-            var contactAdapter = RecycleView(listContact)
-            kolom.apply {
-                layoutManager = LinearLayoutManager (this@RecyclerView)
-                adapter = contactAdapter
-            }
+        }
+
+        // menempatkan dan menampilkan seluruh data pada recycler view
+        var contactAdapter = RecycleView(listContact)
+        kolom.apply {
+            layoutManager = LinearLayoutManager (this@RecyclerView)
+            adapter = contactAdapter
         }
     }
 
+    // jika data berbeda maka Loader Reset akan dijalankan
     override fun onLoaderReset(loader: Loader<Cursor>) {
         kolom.adapter?.notifyDataSetChanged()
     }

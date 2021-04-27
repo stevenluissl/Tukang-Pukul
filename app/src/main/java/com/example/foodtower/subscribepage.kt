@@ -120,11 +120,12 @@ class subscribepage : AppCompatActivity() {
             val homepage = Intent(this@subscribepage, homepage::class.java)
             startActivity(homepage)
 
-            val tesbutton = findViewById<Button>(R.id.tesbutton)
-            tesbutton?.setOnClickListener {
-                val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
-                startActivity(RecyclerView)
-            }
+
+        }
+        val tesbutton = findViewById<Button>(R.id.tesbutton)
+        tesbutton?.setOnClickListener {
+            val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
+            startActivity(RecyclerView)
         }
     }
 }

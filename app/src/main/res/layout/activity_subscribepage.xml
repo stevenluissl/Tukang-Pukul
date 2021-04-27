@@ -287,10 +287,9 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.601" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <ImageView
         android:id="@+id/bordersubscribe"
@@ -302,7 +301,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintVertical_bias="0.844" />
 
     <TextView
         android:id="@+id/no_rekening"
@@ -315,7 +314,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <TextView
         android:id="@+id/namajurumasak"
@@ -329,7 +328,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.761" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <TextView
         android:id="@+id/bca"
@@ -342,7 +341,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fadebottom_subscribe"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.838" />
 
     <Button
         android:id="@+id/reqinformation"
@@ -353,25 +352,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bca"
-        app:layout_constraintVertical_bias="0.811" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="40dp"
-        android:layout_height="195dp"
-        tools:layout_editor_absoluteX="194dp"
-        tools:layout_editor_absoluteY="114dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/tesbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="Mulai Baca Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.929" />
+        app:layout_constraintVertical_bias="0.916" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
