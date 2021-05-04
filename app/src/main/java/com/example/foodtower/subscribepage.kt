@@ -11,9 +11,10 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.TaskStackBuilder
+import kotlinx.android.synthetic.main.activity_adding_food.*
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
-class subscribepage : AppCompatActivity() {
+class subscribepage : AppCompatActivity(),interfaceSubs {
 
     var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
     var noTelp = ContactsContract.CommonDataKinds.Phone.NUMBER
@@ -39,6 +40,24 @@ class subscribepage : AppCompatActivity() {
         /* LoaderManager.getInstance(this).initLoader(1, null, this)*/
 
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        //MVP
+
+        var harga = "0"
+        var dataharga = presenterSubs(this)
+        clear.setOnClickListener {
+           var nama = editTextTextPersonName.text.toString()
+            //mengecek apakah textbox tersebut kosong, bila kosong maka akan menampilkan error "Nama Tidak Boleh Kosong"
+            if(nama.isEmpty()) {
+                editTextTextPersonName.setError("Nama Tidak Boleh Kosong")
+            }
+            //jika ada text maka
+            //menggunakan fungsi dari Presenter untuk mengirimkan data Nama dan Harga
+            else {
+               dataharga.hitungharga(nama,harga)
+            }
+        }
+
 
         reqinformation.setOnClickListener {
 
@@ -128,6 +147,11 @@ class subscribepage : AppCompatActivity() {
             val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
             startActivity(RecyclerView)
         }
+    }
+
+    //menampilkan Harga ke dalam view
+    override fun tampilharga(String: dataSubs) {
+        price.text = String.nominal
     }
 }
 

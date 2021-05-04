@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.foodtower.Fragment.FragmentA
 import com.example.foodtower.Fragment.FragmentB
-import com.example.foodtower.Fragment.InterfaceData
 
 //main activity untuk menampung fragmentA dan fargmentB berkomunikasi satu sama lain mengirim data
 
