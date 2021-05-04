@@ -1,43 +1,47 @@
 package com.example.foodtower
 
-import android.graphics.Bitmap
-import android.provider.ContactsContract.CommonDataKinds.Website.URL
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import org.hamcrest.core.AllOf.allOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.net.URL
 
 @RunWith(AndroidJUnit4::class)
+
 class addingfood {
     @Rule @JvmField
     var activityTestRule = ActivityTestRule(adding_food::class.java)
 
     @Test
-    fun textbox() {
-        onView(withId(R.id.editTextTextPostalAddress)).perform(ViewActions.typeText("lorem ipsum"))
-        onView(withId(R.id.button3)).perform(ViewActions.click())
-    }
     fun camera() {
         onView(withId(R.id.camera)).perform(ViewActions.click())
-        var gambar : org.hamcrest.Matcher<Bitmap>? =
-            allOf(
-                hasData(URL("https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg"))4
-            )
+
     }
 
+    //pengujian untuk memastikan data intent telah benar sesuai dengan data
     @Test
     fun intent() {
-        onView(withId(R.id.button4)).perform (ViewActions.click())
+        //melakukan perform klik pada tombol yang menjalankan pengiriman data intent
+        onView(withId(R.id.button4)).perform (click())
+        //melakukan pengecekkan apakah data yang ditampilkan sudah benar
+        onView(withId(R.id.textView)).check(matches(withText("nama = Adi dengan Umur 32")))
     }
 }
 
-class Test2 {
+class subs {
+    @Rule @JvmField
+    var activityTestRule = ActivityTestRule(subscribepage::class.java)
+
+    @Test
+    fun textbox() {
+        onView(withId(R.id.editTextTextPersonName)).perform(ViewActions.typeText("Budi"))
+        onView(withId(R.id.clear)).perform(ViewActions.click())
+    }
 
 }

@@ -1,6 +1,4 @@
-package com.example.foodtower.Fragment
-
-import android.widget.EditText
+package com.example.foodtower
 
 //menggunakan metode Bundle dengan interface yang berisi method yang dapat diimplementasikan ke MainActivityFragment
 // dan dapat digunakan pada kedua FragmentA dan FragmentB
