@@ -1,4 +1,4 @@
-package com.example.foodtower
+ package com.example.foodtower
 
 import android.app.*
 import android.content.Context
@@ -42,6 +42,7 @@ class subscribepage : AppCompatActivity() {
 
         reqinformation.setOnClickListener {
 
+            editTextTextPersonName.clearComposingText()
             val intent = Intent(this, LauncherActivity::class.java)
             val pendingIntent =
                 PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
