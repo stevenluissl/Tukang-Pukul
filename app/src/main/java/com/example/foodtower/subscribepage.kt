@@ -5,14 +5,21 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_adding_food.*
 import kotlinx.android.synthetic.main.activity_subscribepage.*
+
+private var sound : SoundPool? = null
+private var idsound = 0
 
 class subscribepage : AppCompatActivity(),interfaceSubs {
 
@@ -46,6 +53,13 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
         var harga = "0"
         var dataharga = presenterSubs(this)
         clear.setOnClickListener {
+
+            //jika idsound tidak sama dengan 0 maka akan mengembalikan data yang telah berhasil di load
+            if(idsound != 0) {
+                //memutarkan lagu dan tidak melakukan loop
+                sound?.play(idsound,.99f,.99f,1,0,.99f)
+            }
+
            var nama = editTextTextPersonName.text.toString()
             //mengecek apakah textbox tersebut kosong, bila kosong maka akan menampilkan error "Nama Tidak Boleh Kosong"
             if(nama.isEmpty()) {
@@ -133,24 +147,77 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
         backsatu?.setOnClickListener {
             val chefmenu = Intent(this@subscribepage, chefmenu::class.java)
             startActivity(chefmenu)
+            if(idsound != 0) {
+                sound?.play(idsound,.99f,.99f,1,0,.99f)
+            }
         }
         val hometop = findViewById<ImageButton>(R.id.hometop)
         hometop?.setOnClickListener {
             val homepage = Intent(this@subscribepage, homepage::class.java)
             startActivity(homepage)
-
+            if(idsound != 0) {
+                sound?.play(idsound,.99f,.99f,1,0,.99f)
+            }
 
         }
         val tesbutton = findViewById<Button>(R.id.tesbutton)
         tesbutton?.setOnClickListener {
             val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
             startActivity(RecyclerView)
+            if(idsound != 0) {
+                sound?.play(idsound,.99f,.99f,1,0,.99f)
+            }
         }
     }
 
     //menampilkan Harga ke dalam view
     override fun tampilharga(String: dataSubs) {
         price.text = String.nominal
+    }
+
+    //membuat function untuk mulai membaca data
+    override fun onStart() {
+        super.onStart()
+        //memeriksa apakah build in device terinstall versi android lollipop atau ke atas
+        //maka akan menjalankan function NewSoundPool
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            createNewSoundPool()
+        }
+        //jika versi android di bawah lollipop maka function OldSoundPool akan dijalankan
+        else {
+            createOldSoundPool()
+        }
+        //melakukan load data
+        sound?.setOnLoadCompleteListener {soundPool, id, status ->
+            if(status != 0) {
+                //jika data gagal di-load maka akan muncul pop up "Load Gagal"
+                Toast.makeText(this, "Load Gagal", Toast.LENGTH_SHORT).show()
+            }
+            //jika data berhasil di-load maka akan muncul pop up "Silahkan Mengisi Data!"
+            else {
+                Toast.makeText(this, "Silahkan Mengisi Data!", Toast.LENGTH_SHORT).show()
+            }
+        }
+        //melakukan load sebuah file dari folder raw dan membuat priority terpenting
+        idsound = sound?.load(this, R.raw.waterdrops, 1) ?: 0
+    }
+
+    //melakukan file streaming dengan AudioManager.STREAM_MUSIC
+    private fun createOldSoundPool() {
+        sound = SoundPool(15, AudioManager.STREAM_MUSIC, 0)
+    }
+    //melakukan file streaming dengan SoundPool.Buider
+    private fun createNewSoundPool() {
+        sound = SoundPool.Builder()
+            .setMaxStreams(15)
+            .build()
+    }
+    //merelease data yang telah di load
+    override fun onStop() {
+        super.onStop()
+        sound?.release()
+        sound = null
+
     }
 }
 
