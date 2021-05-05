@@ -9,13 +9,16 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.TaskStackBuilder
 import kotlinx.android.synthetic.main.activity_adding_food.*
+import kotlinx.android.synthetic.main.activity_chef_page.*
 import kotlinx.android.synthetic.main.activity_subscribepage.*
 
 class subscribepage : AppCompatActivity(),interfaceSubs {
 
+    private val subsPrefFileName = "MySubsPref"
     var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
     var noTelp = ContactsContract.CommonDataKinds.Phone.NUMBER
     var stats = ContactsContract.Contacts.EXTRA_ADDRESS_BOOK_INDEX
@@ -146,6 +149,34 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
         tesbutton?.setOnClickListener {
             val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
             startActivity(RecyclerView)
+        }
+
+        subs.setOnClickListener {
+            //akses dan simpan file
+            var subspref = SubsSharedPref(this, subsPrefFileName)
+            //menyimpan data yang diinput ke dalam file
+            subspref.subsname = editTextTextPersonName.text.toString()
+            subspref.subsphonenumber = editTextPhone.text.toString()
+            subspref.subsaddress = editTextTextPersonName2.text.toString()
+            subspref.subscity = editTextTextPersonName3.text.toString()
+            subspref.subsdistrict = editTextTextPersonName4.text.toString()
+            Toast.makeText(this, "Subs Berhasil",Toast.LENGTH_SHORT).show()
+            editTextTextPersonName.text.clear()
+            editTextPhone.text.clear()
+            editTextTextPersonName2.text.clear()
+            editTextTextPersonName3.text.clear()
+            editTextTextPersonName4.text.clear()
+        }
+
+        showData.setOnClickListener {
+            //akses dan simpan file
+            var subspref = SubsSharedPref(this, subsPrefFileName)
+            //menampilkan data dari file
+            editTextTextPersonName.setText(subspref.subsname)
+            editTextPhone.setText(subspref.subsphonenumber)
+            editTextTextPersonName2.setText(subspref.subsaddress)
+            editTextTextPersonName3.setText(subspref.subscity)
+            editTextTextPersonName4.setText(subspref.subsdistrict)
         }
     }
 
