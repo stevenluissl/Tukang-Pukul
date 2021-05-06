@@ -10,6 +10,7 @@ import android.media.SoundPool
 import android.os.Build
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
@@ -21,8 +22,9 @@ import kotlinx.android.synthetic.main.activity_subscribepage.*
 
 private var sound : SoundPool? = null
 private var idsound = 0
+private var myIntentService : Intent? = null
 
-class subscribepage : AppCompatActivity(),interfaceSubs {
+class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
 
     private val subsPrefFileName = "MySubsPref"
     var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
@@ -45,6 +47,20 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscribepage)
+
+        play_music.setOnClickListener{
+            if (play_music.text.toString().toUpperCase().equals("PLAY")){
+                play_music.text = "STOP"
+                myIntentService?.setAction(ACTION_PLAY)
+                startService(myIntentService)
+            }
+            else{
+                play_music.text = "PLAY"
+                myIntentService?.setAction(ACTION_STOP)
+                startService(myIntentService)
+            }
+
+        }
 
         /* LoaderManager.getInstance(this).initLoader(1, null, this)*/
 
@@ -231,6 +247,11 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
         }
         //melakukan load sebuah file dari folder raw dan membuat priority terpenting
         idsound = sound?.load(this, R.raw.waterdrops, 1) ?: 0
+        if (myIntentService==null){
+            myIntentService = Intent(this,playmusic::class.java)
+            myIntentService?.setAction(ACTION_CREATE)
+            startService(myIntentService)
+        }
     }
 
     //melakukan file streaming dengan AudioManager.STREAM_MUSIC
@@ -250,39 +271,50 @@ class subscribepage : AppCompatActivity(),interfaceSubs {
         sound = null
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopService(myIntentService)
+    }
+
+    override fun onClick(p0: View?) {
+
+    }
 }
 
-    /*override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        var contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI
-        var data = arrayOf(DisplayName,noTelp,stats)
-        return CursorLoader (this, contactUri, data, null,
-            null, "$DisplayName DESC")
-    }
 
-    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-        listContact.clear()
-        if(data != null) {
-            data.moveToFirst()
-            while (!data.isAfterLast) {
-                listContact.add(
-                    Subs(
-                        data.getString(data.getColumnIndex(DisplayName)),
-                        data.getString(data.getColumnIndex(noTelp))
-                    )
-                )
-                data.moveToNext()
-            }
-            var contactAdapter = RecycleView(listContact)
-            kolom.apply {
-                layoutManager = ConstraintLayoutStates (this@subscribepage)
-                adapter = contactAdapter
-            }
-        }
-    }
 
-    override fun onLoaderReset(loader: Loader<Cursor>) {
-        kolom.adapter?.notifyDataSetChanged()
-    }*/
+ /*override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+     var contactUri = ContactsContract.CommonDataKinds.Phone.CONTENT_FILTER_URI
+     var data = arrayOf(DisplayName,noTelp,stats)
+     return CursorLoader (this, contactUri, data, null,
+         null, "$DisplayName DESC")
+ }
+
+ override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
+     listContact.clear()
+     if(data != null) {
+         data.moveToFirst()
+         while (!data.isAfterLast) {
+             listContact.add(
+                 Subs(
+                     data.getString(data.getColumnIndex(DisplayName)),
+                     data.getString(data.getColumnIndex(noTelp))
+                 )
+             )
+             data.moveToNext()
+         }
+         var contactAdapter = RecycleView(listContact)
+         kolom.apply {
+             layoutManager = ConstraintLayoutStates (this@subscribepage)
+             adapter = contactAdapter
+         }
+     }
+ }
+
+ override fun onLoaderReset(loader: Loader<Cursor>) {
+     kolom.adapter?.notifyDataSetChanged()
+ }*/
 
 
 //    fun getAlertDialog(view: View) {
