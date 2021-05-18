@@ -1,17 +1,22 @@
 package com.example.foodtower
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.Telephony
+import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_adding_food.*
+import java.io.File
+import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -87,10 +92,85 @@ class adding_food : AppCompatActivity() {
             startActivity(homepage)
         }
 
-        button3.setOnClickListener {
-            editTextTextPersonName10.text = editTextTextPostalAddress.text
-            editTextTextPostalAddress.setText("")
+        update.setOnClickListener {
+            editTextTextPersonName10.text = description.text
+            description.setText("")
+
+            writeFileInternal()
         }
+
+        read.setOnClickListener {
+            restoreData()
+        }
+
+        restore.setOnClickListener {
+            readFileInternal()
+        }
+
+        cleardata.setOnClickListener {
+            delData()
+        }
+    }
+
+    private fun delData() {
+        if(fileList().size != 0){
+            for (i in fileList() ){
+                deleteFile(i)
+            }
+            description.setText("Deleted")
+        }
+        else {
+            description.setText("Empty File")
+        }
+    }
+
+    private fun readFileInternal() {
+        description.text.clear()
+        try {
+            var read = openFileInput("FoodData.txt").apply{
+                bufferedReader().useLines {
+                    for (text in it.toList() ){
+                        description.setText("${description.text}\\n$text")
+                    }
+                }
+            }
+        }
+        //untuk menangkap file yang error
+        catch (e : FileNotFoundException){
+            Toast.makeText(this,"File Not Found", Toast.LENGTH_SHORT).show()
+        }
+        catch (e : IOException){
+            Toast.makeText(this,"File can't be Read", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun restoreData() {
+        description.text.clear()
+        if(fileList().size != 0){
+            for (i in fileList() ){
+                description.setText("${description.text}\\n$i")
+            }
+        }
+        else {
+            description.setText("Empty File")
+        }
+    }
+
+    private fun writeFileInternal() {
+        //membuat open File dengan nama FoodData bertipe data txt dan dengan mode private
+        var output = openFileOutput("FoodData.txt", Context.MODE_PRIVATE).apply {
+            //data string yang dituliskan di textbox "description" akan dimasukkan ke dalam file FoodData.txt
+            write(description.text.toString().toByteArray())
+            //menutup file
+            close()
+        }
+        //menyimpan file dengan nama FoodData.txt
+        var filedata = File(this.filesDir, "FoodData.txt")
+        //melihat dimana file ini akan disimpan oleh OS android
+        Log.w("Ok", filedata.absolutePath)
+        //memebersihkan text box "description" dan menampilkan pop up "Saved"
+        description.text.clear()
+        Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show()
     }
 
     // proses request data dari server
