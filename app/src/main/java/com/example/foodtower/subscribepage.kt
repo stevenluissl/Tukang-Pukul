@@ -49,12 +49,15 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         setContentView(R.layout.activity_subscribepage)
 
         play_music.setOnClickListener{
+            //untuk membuat pada saat kita menekan play maka yang keluar akan stop
             if (play_music.text.toString().toUpperCase().equals("PLAY")){
                 play_music.text = "STOP"
+                //menjalankan perintah myIntentService pada playmusic.kt
                 myIntentService?.setAction(ACTION_PLAY)
                 startService(myIntentService)
             }
             else{
+                //untuk membuat kata stop menjadi play
                 play_music.text = "PLAY"
                 myIntentService?.setAction(ACTION_STOP)
                 startService(myIntentService)
