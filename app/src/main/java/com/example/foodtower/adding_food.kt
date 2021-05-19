@@ -1,12 +1,15 @@
 package com.example.foodtower
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.os.Environment
 import android.provider.Telephony
 import android.util.Log
 import android.view.View
@@ -14,6 +17,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_adding_food.*
 import java.io.File
 import java.io.FileNotFoundException
@@ -182,6 +186,25 @@ class adding_food : AppCompatActivity() {
         description.text.clear()
         Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show()
     }
+
+    //untuk mengecek apakah dapat menambahkan ataupun membaca file pada external storage
+    private fun isExternalStorageWriteable():Boolean{
+        //proses mengecek izin untuk akses ke external storage
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+            PackageManager.PERMISSION_DENIED) {
+            //jika masih belum ada permission, maka request permission untuk menambahkan atau membaca file
+            requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),37)
+        }
+
+        //proses untuk mengecek apakah external storage dapat diakses atau tidak
+        if(Environment.MEDIA_MOUNTED == Environment.getExternalStorageState() ||
+            Environment.MEDIA_MOUNTED_READ_ONLY == Environment.getExternalStorageState())
+        {
+            return true
+        }
+        return false
+    }
+
 
     // proses request data dari server
     private fun processBitMap(url: String): Bitmap? {
