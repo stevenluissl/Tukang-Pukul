@@ -93,18 +93,17 @@ class adding_food : AppCompatActivity() {
         }
 
         update.setOnClickListener {
-            editTextTextPersonName10.text = description.text
-            description.setText("")
-
+//            editTextTextPersonName10.text = description.text
+//            description.setText("")
             writeFileInternal()
         }
 
         read.setOnClickListener {
-            restoreData()
+            readFileInternal()
         }
 
         restore.setOnClickListener {
-            readFileInternal()
+            restoreData()
         }
 
         cleardata.setOnClickListener {
@@ -113,46 +112,57 @@ class adding_food : AppCompatActivity() {
     }
 
     private fun delData() {
+        //untuk mengecek apabila size file tersebut tidak sama dengan 0
         if(fileList().size != 0){
             for (i in fileList() ){
+                //bila ukuran file tidak sama dengan 0 maka file akan dihapus
                 deleteFile(i)
             }
-            description.setText("Deleted")
+            //dan memunculkan pop up "File Deleted"
+            Toast.makeText(this,"File Deleted", Toast.LENGTH_SHORT).show()
         }
         else {
-            description.setText("Empty File")
-        }
-    }
-
-    private fun readFileInternal() {
-        description.text.clear()
-        try {
-            var read = openFileInput("FoodData.txt").apply{
-                bufferedReader().useLines {
-                    for (text in it.toList() ){
-                        description.setText("${description.text}\\n$text")
-                    }
-                }
-            }
-        }
-        //untuk menangkap file yang error
-        catch (e : FileNotFoundException){
-            Toast.makeText(this,"File Not Found", Toast.LENGTH_SHORT).show()
-        }
-        catch (e : IOException){
-            Toast.makeText(this,"File can't be Read", Toast.LENGTH_SHORT).show()
+            //jika file sama dengan 0 maka akan memunculkan pop up "File not Exist"
+            Toast.makeText(this,"File not Exist", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun restoreData() {
         description.text.clear()
-        if(fileList().size != 0){
-            for (i in fileList() ){
-                description.setText("${description.text}\\n$i")
+        try {
+            //membuka file FoodData.txt
+            var read = openFileInput("FoodData.txt").apply{
+                //membaca setiap baris isi data dalam file
+                bufferedReader().useLines {
+                    for (text in it.toList() ){
+                        //memunculkan text yang ada di dalam file ke textp=box "description"
+                        description.setText("${description.text}\\n$text")
+                    }
+                }
             }
         }
+        //untuk menangkap file yang tidak ditemukan dan memunculkan pop up
+        catch (e : FileNotFoundException){
+            Toast.makeText(this,"File Not Found", Toast.LENGTH_SHORT).show()
+        }
+        //untuk menangkap file yang error dan memunculkan pop up
+        catch (e : IOException){
+            Toast.makeText(this,"File can't be Read", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun readFileInternal() {
+        description.text.clear()
+        //untuk mengecek apabila size file tersebut tidak sama dengan 0
+        if(fileList().size != 0){
+            //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox "description"
+            for (mydata in fileList() ){
+                description.setText("${description.text}\\n$mydata")
+            }
+        }
+        //jika ukuran file sama dengan nol maka akan memunculkan pop up "Empty File"
         else {
-            description.setText("Empty File")
+            Toast.makeText(this,"Empty File", Toast.LENGTH_SHORT).show()
         }
     }
 
