@@ -1,0 +1,128 @@
+Index: app/src/main/java/com/example/foodtower/adding_food.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.foodtower\r\n\r\nimport android.annotation.SuppressLint\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.content.IntentFilter\r\nimport android.graphics.Bitmap\r\nimport android.graphics.BitmapFactory\r\nimport android.os.Bundle\r\nimport android.provider.Telephony\r\nimport android.util.Log\r\nimport android.view.View\r\nimport android.widget.ImageButton\r\nimport android.widget.ImageView\r\nimport android.widget.Toast\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport kotlinx.android.synthetic.main.activity_adding_food.*\r\nimport java.io.File\r\nimport java.io.FileNotFoundException\r\nimport java.io.IOException\r\nimport java.io.InputStream\r\nimport java.net.HttpURLConnection\r\nimport java.net.URL\r\n\r\nprivate const val EXTRA_STATUS: String = \"EXTRA_STATUS\"\r\nclass adding_food : AppCompatActivity() {\r\n    @SuppressLint(\"WrongViewCast\")\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_adding_food)\r\n\r\n        // ketika activity aktif maka StatusReceiver akan diproses\r\n        var StatusReceiver = MyStatusReceiver()\r\n        var filter = IntentFilter()\r\n        // receiver akan bekerja ketika status Airplane Mode telah berubah\r\n        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED)\r\n        registerReceiver(StatusReceiver,filter)\r\n\r\n        // ketika activity aktif maka SMSReceiver akan diproses\r\n        var SMSReceiver = MySMSReceiver()\r\n        var filter2 = IntentFilter()\r\n        // receiver akan bekerja ketika menerima sebuah SMS\r\n        filter2.addAction(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)\r\n        registerReceiver(SMSReceiver,filter2)\r\n\r\n        // mendeklarasikan id image button dan image view dari adding_food.xml\r\n        val addImg = findViewById<ImageButton>(R.id.camera)\r\n        val viewImg = findViewById<ImageView>(R.id.insertphoto)\r\n        var strURL = \"https://www.masakapahariini.com/wp-content/uploads/2019/01/nasi-goreng-jawa-620x440.jpg\";\r\n\r\n        // memanggil addImg untuk bisa di click\r\n        addImg.setOnClickListener {\r\n            Thread (Runnable {\r\n                // merequest gambar dari link URL\r\n                val bitmap = processBitMap(strURL)\r\n                //update image dilakukan melalui viewImg.post\r\n                viewImg.post {\r\n                    //data gambar diambil dari bitmap\r\n                    viewImg.setImageBitmap(bitmap);\r\n                }\r\n            }).start()\r\n            // pada saat image button diclick Logo dan tulisan akan menjadi invisible\r\n            camera.setVisibility(View.INVISIBLE)\r\n            chooseortakephoto.setVisibility(View.INVISIBLE)\r\n        }\r\n\r\n        fragment.setOnClickListener {\r\n            val fragment1 = Intent(this, MainActivityFragment::class.java)\r\n            startActivity(fragment1)\r\n        }\r\n\r\n        recevier.setOnClickListener {\r\n            val reciever2 = Intent(this, reciever2::class.java)\r\n            startActivity(reciever2)\r\n        }\r\n\r\n        button4.setOnClickListener {\r\n            var Intent2Act = Intent(this,MainActivity2::class.java)\r\n            Intent2Act.putExtra(EXTRA_NAMA,\"Adi\")\r\n            Intent2Act.putExtra(EXTRA_UMUR,32)\r\n            startActivity(Intent2Act)\r\n        }\r\n\r\n        val backsatu = findViewById<ImageButton>(R.id.backsatu)\r\n        backsatu?.setOnClickListener {\r\n            val chefpage = Intent(this@adding_food,chef_page::class.java)\r\n            startActivity(chefpage)\r\n        }\r\n        val hometop = findViewById<ImageButton>(R.id.hometop)\r\n        hometop?.setOnClickListener {\r\n            val homepage = Intent(this@adding_food,homepage::class.java)\r\n            startActivity(homepage)\r\n        }\r\n\r\n        update.setOnClickListener {\r\n//            editTextTextPersonName10.text = description.text\r\n//            description.setText(\"\")\r\n            writeFileInternal()\r\n        }\r\n\r\n        read.setOnClickListener {\r\n            readFileInternal()\r\n        }\r\n\r\n        restore.setOnClickListener {\r\n            restoreData()\r\n        }\r\n\r\n        cleardata.setOnClickListener {\r\n            delData()\r\n        }\r\n    }\r\n\r\n    private fun delData() {\r\n        //untuk mengecek apabila size file tersebut tidak sama dengan 0\r\n        if(fileList().size != 0){\r\n            for (i in fileList() ){\r\n                //bila ukuran file tidak sama dengan 0 maka file akan dihapus\r\n                deleteFile(i)\r\n            }\r\n            //dan memunculkan pop up \"File Deleted\"\r\n            Toast.makeText(this,\"File Deleted\", Toast.LENGTH_SHORT).show()\r\n        }\r\n        else {\r\n            //jika file sama dengan 0 maka akan memunculkan pop up \"File not Exist\"\r\n            Toast.makeText(this,\"File not Exist\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    private fun restoreData() {\r\n        description.text.clear()\r\n        try {\r\n            //membuka file FoodData.txt\r\n            var read = openFileInput(\"FoodData.txt\").apply{\r\n                //membaca setiap baris isi data dalam file\r\n                bufferedReader().useLines {\r\n                    for (text in it.toList() ){\r\n                        //memunculkan text yang ada di dalam file ke textp=box \"description\"\r\n                        description.setText(\"${description.text}\\\\n$text\")\r\n                    }\r\n                }\r\n            }\r\n        }\r\n        //untuk menangkap file yang tidak ditemukan dan memunculkan pop up\r\n        catch (e : FileNotFoundException){\r\n            Toast.makeText(this,\"File Not Found\", Toast.LENGTH_SHORT).show()\r\n        }\r\n        //untuk menangkap file yang error dan memunculkan pop up\r\n        catch (e : IOException){\r\n            Toast.makeText(this,\"File can't be Read\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    private fun readFileInternal() {\r\n        description.text.clear()\r\n        //untuk mengecek apabila size file tersebut tidak sama dengan 0\r\n        if(fileList().size != 0){\r\n            //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox \"description\"\r\n            for (mydata in fileList() ){\r\n                description.setText(\"${description.text}\\\\n$mydata\")\r\n            }\r\n        }\r\n        //jika ukuran file sama dengan nol maka akan memunculkan pop up \"Empty File\"\r\n        else {\r\n            Toast.makeText(this,\"Empty File\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    private fun writeFileInternal() {\r\n        //membuat open File dengan nama FoodData bertipe data txt dan dengan mode private\r\n        var output = openFileOutput(\"FoodData.txt\", Context.MODE_PRIVATE).apply {\r\n            //data string yang dituliskan di textbox \"description\" akan dimasukkan ke dalam file FoodData.txt\r\n            write(description.text.toString().toByteArray())\r\n            //menutup file\r\n            close()\r\n        }\r\n        //menyimpan file dengan nama FoodData.txt\r\n        var filedata = File(this.filesDir, \"FoodData.txt\")\r\n        //melihat dimana file ini akan disimpan oleh OS android\r\n        Log.w(\"Ok\", filedata.absolutePath)\r\n        //memebersihkan text box \"description\" dan menampilkan pop up \"Saved\"\r\n        description.text.clear()\r\n        Toast.makeText(this,\"Saved\", Toast.LENGTH_SHORT).show()\r\n    }\r\n\r\n    // proses request data dari server\r\n    private fun processBitMap(url: String): Bitmap? {\r\n        return try {\r\n            val url = URL(url)\r\n            val connection: HttpURLConnection = url.openConnection() as HttpURLConnection\r\n            connection.doInput = true\r\n            connection.connect()\r\n            val input: InputStream = connection.inputStream\r\n            // gambar didecode berupa data stream\r\n            val myBitmap = BitmapFactory.decodeStream(input)\r\n\r\n            // gambar yag sudah didecode akan dikembalikan ke bitmap lama\r\n            myBitmap\r\n        } catch (e: IOException) {\r\n            e.printStackTrace()\r\n            null\r\n        }\r\n    }\r\n\r\n    override fun onSaveInstanceState(outState: Bundle) {\r\n        super.onSaveInstanceState(outState)\r\n        outState.putString(EXTRA_STATUS, editTextTextPersonName10.text.toString())\r\n    }\r\n\r\n    override fun onRestoreInstanceState(savedInstanceState: Bundle) {\r\n        super.onRestoreInstanceState(savedInstanceState)\r\n        editTextTextPersonName10.text = savedInstanceState?.getString(EXTRA_STATUS) ?: \"Kosong\"\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/foodtower/adding_food.kt	(revision 1e3a0c5babb858dd1361ea6184a4054384eef152)
++++ app/src/main/java/com/example/foodtower/adding_food.kt	(date 1621437695563)
+@@ -4,6 +4,7 @@
+ import android.content.Context
+ import android.content.Intent
+ import android.content.IntentFilter
++import android.content.pm.PackageManager
+ import android.graphics.Bitmap
+ import android.graphics.BitmapFactory
+ import android.os.Bundle
+@@ -14,6 +15,7 @@
+ import android.widget.ImageView
+ import android.widget.Toast
+ import androidx.appcompat.app.AppCompatActivity
++import androidx.core.content.ContextCompat
+ import kotlinx.android.synthetic.main.activity_adding_food.*
+ import java.io.File
+ import java.io.FileNotFoundException
+@@ -21,6 +23,7 @@
+ import java.io.InputStream
+ import java.net.HttpURLConnection
+ import java.net.URL
++import java.util.jar.Manifest
+ 
+ private const val EXTRA_STATUS: String = "EXTRA_STATUS"
+ class adding_food : AppCompatActivity() {
+@@ -95,19 +98,38 @@
+         update.setOnClickListener {
+ //            editTextTextPersonName10.text = description.text
+ //            description.setText("")
+-            writeFileInternal()
++//            writeFileInternal()
+         }
+ 
+         read.setOnClickListener {
+-            readFileInternal()
++//            readFileInternal()
+         }
+ 
+         restore.setOnClickListener {
+-            restoreData()
++//            restoreData()
+         }
+ 
+         cleardata.setOnClickListener {
+-            delData()
++//            delData()
++        }
++        private fun isExternalStorageReadable():Boolean{
++            if (ContextCompat.checkSelfPermission(
++                    this,
++                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
++            ){
++                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),131313)
++            }
++        }
++        onRequestPermissionsResult(
++            requestCode: Int,
++            permission: Array<out String>,
++            grantResults: IntArray
++        ){
++            when(requestCode){
++                131313 -> {
++                    if(grantResults)
++                }
++            }
+         }
+     }
+ 
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.foodtower\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />\r\n    <uses-permission android:name=\"android.permission.RECEIVE_SMS\" />\r\n    <uses-permission android:name=\"android.permission.READ_SMS\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <service\r\n            android:name=\".playmusic\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\"></service>\r\n\r\n        <receiver\r\n            android:name=\".BroadcastReceiver\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\" />\r\n\r\n        <service\r\n            android:name=\".MyService\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\" />\r\n        <service\r\n            android:name=\".FoodRec\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\"\r\n            android:permission=\"android.permission.BIND_JOB_SERVICE\" />\r\n\r\n        <activity android:name=\".MainActivityFragment\" />\r\n\r\n        <receiver\r\n            android:name=\".MySMSReceiver\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.provider.Telephony.SMS_RECEIVED\" />\r\n                <action android:name=\"android.provider.Telephony.SMS_READ\" />\r\n            </intent-filter>\r\n        </receiver>\r\n        <receiver\r\n            android:name=\".MyStatusReceiver\"\r\n            android:enabled=\"true\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.AIRPLANE_MODE\" />\r\n            </intent-filter>\r\n        </receiver>\r\n\r\n        <activity android:name=\".MainActivity3\" />\r\n        <activity android:name=\".MainActivity2\" />\r\n        <activity android:name=\".adding_food\" />\r\n        <activity android:name=\".client_list\" />\r\n        <activity android:name=\".chef_page\" />\r\n        <activity android:name=\".vote_result\" />\r\n        <activity android:name=\".navigation_bar\" />\r\n        <activity android:name=\".food_menu3\" />\r\n        <activity android:name=\".food_menu2\" />\r\n        <activity android:name=\".food_menu1\" />\r\n        <activity android:name=\".subscribepage\" />\r\n        <activity\r\n            android:name=\".chefmenu\"\r\n            android:parentActivityName=\".homepage\" />\r\n        <activity android:name=\".homepage\" />\r\n        <activity android:name=\".splashscreen\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity android:name=\".MainActivity\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 1e3a0c5babb858dd1361ea6184a4054384eef152)
++++ app/src/main/AndroidManifest.xml	(date 1621436194505)
+@@ -6,7 +6,7 @@
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+     <uses-permission android:name="android.permission.READ_SMS" />
+-
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+     <application
+         android:allowBackup="true"
+         android:icon="@mipmap/ic_launcher"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 1e3a0c5babb858dd1361ea6184a4054384eef152)
++++ .idea/gradle.xml	(date 1621437824744)
+@@ -15,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 1e3a0c5babb858dd1361ea6184a4054384eef152)
++++ .idea/misc.xml	(date 1621437824727)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">

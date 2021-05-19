@@ -1,8 +1,6 @@
 package com.example.foodtower
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
@@ -11,16 +9,14 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Telephony
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_adding_food.*
+import kotlinx.android.synthetic.main.activity_subscribepage.view.*
 import java.io.File
-import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
@@ -99,101 +95,128 @@ class adding_food : AppCompatActivity() {
         update.setOnClickListener {
 //            editTextTextPersonName10.text = description.text
 //            description.setText("")
-            writeFileInternal()
+//            writeFileInternal()
+            if (isExternalStorageWriteable()){
+                writeFileInternal()
+            }
         }
 
         read.setOnClickListener {
-            readFileInternal()
+//            readFileInternal()
+            if (isExternalStorageWriteable()){
+                readFileInternal()
+            }
         }
 
         restore.setOnClickListener {
-            restoreData()
+//            restoreData()
         }
 
         cleardata.setOnClickListener {
-            delData()
-        }
-    }
-
-    private fun delData() {
-        //untuk mengecek apabila size file tersebut tidak sama dengan 0
-        if(fileList().size != 0){
-            for (i in fileList() ){
-                //bila ukuran file tidak sama dengan 0 maka file akan dihapus
-                deleteFile(i)
-            }
-            //dan memunculkan pop up "File Deleted"
-            Toast.makeText(this,"File Deleted", Toast.LENGTH_SHORT).show()
-        }
-        else {
-            //jika file sama dengan 0 maka akan memunculkan pop up "File not Exist"
-            Toast.makeText(this,"File not Exist", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun restoreData() {
-        description.text.clear()
-        try {
-            //membuka file FoodData.txt
-            var read = openFileInput("FoodData.txt").apply{
-                //membaca setiap baris isi data dalam file
-                bufferedReader().useLines {
-                    for (text in it.toList() ){
-                        //memunculkan text yang ada di dalam file ke textp=box "description"
-                        description.setText("${description.text}\\n$text")
-                    }
-                }
-            }
-        }
-        //untuk menangkap file yang tidak ditemukan dan memunculkan pop up
-        catch (e : FileNotFoundException){
-            Toast.makeText(this,"File Not Found", Toast.LENGTH_SHORT).show()
-        }
-        //untuk menangkap file yang error dan memunculkan pop up
-        catch (e : IOException){
-            Toast.makeText(this,"File can't be Read", Toast.LENGTH_SHORT).show()
+//            delData()
         }
     }
 
     private fun readFileInternal() {
+        var myDir = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.toURI())
         description.text.clear()
-        //untuk mengecek apabila size file tersebut tidak sama dengan 0
-        if(fileList().size != 0){
-            //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox "description"
-            for (mydata in fileList() ){
-                description.setText("${description.text}\\n$mydata")
-            }
+        var readFile =""
+        File(myDir,"FoodData.txt").forEachLine {
+            readFile+="$it\n"
         }
-        //jika ukuran file sama dengan nol maka akan memunculkan pop up "Empty File"
-        else {
-            Toast.makeText(this,"Empty File", Toast.LENGTH_SHORT).show()
-        }
+        description.setText(readFile)
     }
 
     private fun writeFileInternal() {
-        //membuat open File dengan nama FoodData bertipe data txt dan dengan mode private
-        var output = openFileOutput("FoodData.txt", Context.MODE_PRIVATE).apply {
-            //data string yang dituliskan di textbox "description" akan dimasukkan ke dalam file FoodData.txt
-            write(description.text.toString().toByteArray())
-            //menutup file
-            close()
+        var myDir = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)?.toURI())
+        if (!myDir.exists()){
+            myDir.mkdir()
         }
-        //menyimpan file dengan nama FoodData.txt
-        var filedata = File(this.filesDir, "FoodData.txt")
-        //melihat dimana file ini akan disimpan oleh OS android
-        Log.w("Ok", filedata.absolutePath)
-        //memebersihkan text box "description" dan menampilkan pop up "Saved"
+        File(myDir,"FoodData.txt").apply {
+            writeText(description.text.toString())
+        }
         description.text.clear()
-        Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show()
     }
+
+//    private fun delData() {
+//        //untuk mengecek apabila size file tersebut tidak sama dengan 0
+//        if(fileList().size != 0){
+//            for (i in fileList() ){
+//                //bila ukuran file tidak sama dengan 0 maka file akan dihapus
+//                deleteFile(i)
+//            }
+//            //dan memunculkan pop up "File Deleted"
+//            Toast.makeText(this,"File Deleted", Toast.LENGTH_SHORT).show()
+//        }
+//        else {
+//            //jika file sama dengan 0 maka akan memunculkan pop up "File not Exist"
+//            Toast.makeText(this,"File not Exist", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun restoreData() {
+//        description.text.clear()
+//        try {
+//            //membuka file FoodData.txt
+//            var read = openFileInput("FoodData.txt").apply{
+//                //membaca setiap baris isi data dalam file
+//                bufferedReader().useLines {
+//                    for (text in it.toList() ){
+//                        //memunculkan text yang ada di dalam file ke textp=box "description"
+//                        description.setText("${description.text}\\n$text")
+//                    }
+//                }
+//            }
+//        }
+//        //untuk menangkap file yang tidak ditemukan dan memunculkan pop up
+//        catch (e : FileNotFoundException){
+//            Toast.makeText(this,"File Not Found", Toast.LENGTH_SHORT).show()
+//        }
+//        //untuk menangkap file yang error dan memunculkan pop up
+//        catch (e : IOException){
+//            Toast.makeText(this,"File can't be Read", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun readFileInternal() {
+//        description.text.clear()
+//        //untuk mengecek apabila size file tersebut tidak sama dengan 0
+//        if(fileList().size != 0){
+//            //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox "description"
+//            for (mydata in fileList() ){
+//                description.setText("${description.text}\\n$mydata")
+//            }
+//        }
+//        //jika ukuran file sama dengan nol maka akan memunculkan pop up "Empty File"
+//        else {
+//            Toast.makeText(this,"Empty File", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+//
+//    private fun writeFileInternal() {
+//        //membuat open File dengan nama FoodData bertipe data txt dan dengan mode private
+//        var output = openFileOutput("FoodData.txt", Context.MODE_PRIVATE).apply {
+//            //data string yang dituliskan di textbox "description" akan dimasukkan ke dalam file FoodData.txt
+//            write(description.text.toString().toByteArray())
+//            //menutup file
+//            close()
+//        }
+//        //menyimpan file dengan nama FoodData.txt
+//        var filedata = File(this.filesDir, "FoodData.txt")
+//        //melihat dimana file ini akan disimpan oleh OS android
+//        Log.w("Ok", filedata.absolutePath)
+//        //memebersihkan text box "description" dan menampilkan pop up "Saved"
+//        description.text.clear()
+//        Toast.makeText(this,"Saved", Toast.LENGTH_SHORT).show()
+//    }
 
     //untuk mengecek apakah dapat menambahkan ataupun membaca file pada external storage
     private fun isExternalStorageWriteable():Boolean{
         //proses mengecek izin untuk akses ke external storage
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
             PackageManager.PERMISSION_DENIED) {
             //jika masih belum ada permission, maka request permission untuk menambahkan atau membaca file
-            requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),37)
+            requestPermissions(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),37)
         }
 
         //proses untuk mengecek apakah external storage dapat diakses atau tidak
