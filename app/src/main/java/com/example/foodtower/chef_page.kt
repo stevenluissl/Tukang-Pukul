@@ -114,25 +114,6 @@ class chef_page : AppCompatActivity() {
             }
         }
 
-        /*updatedata.setOnClickListener {
-            var hasil = ""
-            doAsync {
-                var userSubsTMP = userSubs(Random.nextInt())
-                userSubsTMP.nama = editTextTextPersonName5.text.toString()
-                userSubsTMP.NoHP = editTextTextPersonName6.text.toString()
-                userSubsTMP.lokasi = editTextTextPersonName7.text.toString()
-                userSubsTMP.bank = editTextTextPersonName8.text.toString()
-                userSubsTMP.harga = editTextTextPersonName9.text.toString()
-                db.userDAO().UpdateDataSubs()
-                for(allData in db.userDAO().getAllDataSubs()){
-                    hasil+= "$(allData)"
-                }
-                uiThread {
-                    Log.w("Hasil DB", hasil)
-                }
-            }
-        }*/
-
         deletedata.setOnClickListener {
             doAsync {
                 db.userDAO().DeleteDataSubs(editTextTextPersonName5.text.toString())
