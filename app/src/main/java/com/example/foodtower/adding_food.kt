@@ -92,6 +92,14 @@ class adding_food : AppCompatActivity() {
             startActivity(homepage)
         }
 
+        size.setOnClickListener {
+            val filesize = File("FoodData.txt").length()
+            val sizeInMb = filesize / (1024.0 * 1024)
+            val sizeInMbStr = "%.2f".format(sizeInMb)
+            Toast.makeText(this,"File size : ${sizeInMbStr}kb", Toast.LENGTH_SHORT).show()
+//         description.setText("${description.text}\n$filesize")
+        }
+
         update.setOnClickListener {
 //            editTextTextPersonName10.text = description.text
 //            description.setText("")
@@ -136,7 +144,7 @@ class adding_food : AppCompatActivity() {
                 bufferedReader().useLines {
                     for (text in it.toList() ){
                         //memunculkan text yang ada di dalam file ke textp=box "description"
-                        description.setText("${description.text}\\n$text")
+                        description.setText("${description.text}\n$text")
                     }
                 }
             }
@@ -157,7 +165,7 @@ class adding_food : AppCompatActivity() {
         if(fileList().size != 0){
             //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox "description"
             for (mydata in fileList() ){
-                description.setText("${description.text}\\n$mydata")
+                description.setText("${description.text}\n$mydata")
             }
         }
         //jika ukuran file sama dengan nol maka akan memunculkan pop up "Empty File"
