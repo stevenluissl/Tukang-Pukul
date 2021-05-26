@@ -226,7 +226,7 @@
         app:layout_constraintVertical_bias="0.922" />
 
     <Button
-        android:id="@+id/updatedata2"
+        android:id="@+id/updatedata"
         android:layout_width="102dp"
         android:layout_height="63dp"
         android:text="Overwrite Data"
@@ -238,7 +238,7 @@
         app:layout_constraintVertical_bias="0.923" />
 
     <Button
-        android:id="@+id/savedata2"
+        android:id="@+id/savedata"
         android:layout_width="99dp"
         android:layout_height="62dp"
         android:text="Save Data"
