@@ -7,16 +7,20 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.mashape.unirest.http.Unirest
 import kotlinx.android.synthetic.main.activity_chef_page.*
 import kotlinx.android.synthetic.main.activity_food_menu1.*
 import kotlinx.android.synthetic.main.activity_homepage.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import org.json.JSONObject
+import kotlin.random.Random
 
 
 class chef_page : AppCompatActivity() {
@@ -86,6 +90,53 @@ class chef_page : AppCompatActivity() {
 
         foodrec.setOnClickListener {
             startJob()
+        }
+
+        var db = Room.databaseBuilder(
+            this, DBUserSubs::class.java, "myUserDataSubs.db"
+        ).build()
+        savedata.setOnClickListener {
+            var hasil = ""
+            doAsync {
+                var userSubsTMP = userSubs(Random.nextInt())
+                userSubsTMP.nama = editTextTextPersonName5.text.toString()
+                userSubsTMP.NoHP = editTextTextPersonName6.text.toString()
+                userSubsTMP.lokasi = editTextTextPersonName7.text.toString()
+                userSubsTMP.bank = editTextTextPersonName8.text.toString()
+                userSubsTMP.harga = editTextTextPersonName9.text.toString()
+                db.userDAO().InsertDataSubs(userSubsTMP)
+                for(allData in db.userDAO().getAllDataSubs()){
+                    hasil+= "${allData}"
+                }
+                uiThread {
+                    Log.w("Hasil DB", hasil)
+                }
+            }
+        }
+
+        /*updatedata.setOnClickListener {
+            var hasil = ""
+            doAsync {
+                var userSubsTMP = userSubs(Random.nextInt())
+                userSubsTMP.nama = editTextTextPersonName5.text.toString()
+                userSubsTMP.NoHP = editTextTextPersonName6.text.toString()
+                userSubsTMP.lokasi = editTextTextPersonName7.text.toString()
+                userSubsTMP.bank = editTextTextPersonName8.text.toString()
+                userSubsTMP.harga = editTextTextPersonName9.text.toString()
+                db.userDAO().UpdateDataSubs()
+                for(allData in db.userDAO().getAllDataSubs()){
+                    hasil+= "$(allData)"
+                }
+                uiThread {
+                    Log.w("Hasil DB", hasil)
+                }
+            }
+        }*/
+
+        deletedata.setOnClickListener {
+            doAsync {
+                db.userDAO().DeleteDataSubs(editTextTextPersonName5.text.toString())
+            }
         }
     }
 

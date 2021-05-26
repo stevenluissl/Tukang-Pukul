@@ -9,7 +9,7 @@ data class userSubs(
     @PrimaryKey var id : Int,
     @ColumnInfo(name = "COLUMN_NAME") var nama : String = "",
     @ColumnInfo(name = "COLUMN_PHONENUMBER") var NoHP : String = "",
-    @ColumnInfo(name = "COLUMN_ADDRESS") var alamat : String = "",
-    @ColumnInfo(name = "COLUMN_CITY") var kota : String = "",
-    @ColumnInfo(name = "COLUMN_DISTRICT") var kecamatan : String = ""
+    @ColumnInfo(name = "COLUMN_LOCATION") var lokasi : String = "",
+    @ColumnInfo(name = "COLUMN_BANKACCNUMBER") var bank : String = "",
+    @ColumnInfo(name = "COLUMN_PRICE") var harga : String = ""
 )
