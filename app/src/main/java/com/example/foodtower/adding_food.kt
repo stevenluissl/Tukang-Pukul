@@ -163,7 +163,7 @@ class adding_food : AppCompatActivity() {
 //                bufferedReader().useLines {
 //                    for (text in it.toList() ){
 //                        //memunculkan text yang ada di dalam file ke textp=box "description"
-//                        description.setText("${description.text}\\n$text")
+//                        description.setText("${description.text}n$text")
 //                    }
 //                }
 //            }
@@ -184,7 +184,7 @@ class adding_food : AppCompatActivity() {
 //        if(fileList().size != 0){
 //            //bila tidak maka akan memunculkan text yang ada di dalam file ke textbox "description"
 //            for (mydata in fileList() ){
-//                description.setText("${description.text}\\n$mydata")
+//                description.setText("${description.text}\n$mydata")
 //            }
 //        }
 //        //jika ukuran file sama dengan nol maka akan memunculkan pop up "Empty File"
