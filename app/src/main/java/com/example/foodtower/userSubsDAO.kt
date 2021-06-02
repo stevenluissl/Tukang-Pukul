@@ -22,4 +22,7 @@ interface userSubsDAO {
     // Menghapus seluruh row berdasarkan data yang ada di kolom nama
     @Query("Delete from userSubs where COLUMN_NAME = :nama")
     fun DeleteDataSubs(nama : String)
+
+    @Query("Delete from userSubs")
+    fun nukeTable();
 }

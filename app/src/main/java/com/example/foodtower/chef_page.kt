@@ -17,9 +17,14 @@ import kotlin.random.Random
 
 class chef_page : AppCompatActivity() {
     var JobSchedulerID = 37
+    var myFirstRun : FirstRun? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chef_page)
+
+
+
 
         /*
         var serviceComponent = ComponentName(this,FoodRec::class.java)
@@ -89,6 +94,17 @@ class chef_page : AppCompatActivity() {
             this, DBUserSubs::class.java, "myUserDataSubs.db"
         ).build()
 
+        doAsync {
+            db.userDAO().nukeTable()
+        }
+
+        myFirstRun = FirstRun(this)
+        myFirstRun?.firstRun = true
+        if(myFirstRun!!.firstRun) {
+            var secondIntent = Intent(this, pre_load::class.java)
+            startActivity(secondIntent)
+        }
+
         savedata.setOnClickListener {
             doAsync {
                 // Mendeklarasikan userSubs dan men-generate angka random untuk id (primary key)
@@ -111,6 +127,8 @@ class chef_page : AppCompatActivity() {
                 db.userDAO().DeleteDataSubs(editTextTextPersonName5.text.toString())
             }
         }
+
+
 
         updatedata.setOnClickListener {
             doAsync {
@@ -140,7 +158,6 @@ class chef_page : AppCompatActivity() {
 
             //menampilkan String dari total hits
             textView4.text = allres.toString()
-
         }
     }
 }
