@@ -83,6 +83,5 @@ class pre_load : AppCompatActivity() {
         progressBar.progress = 0
         progressBar.max = chef.size
 
-        myUserSubs = userSubsDAO
     }
 }

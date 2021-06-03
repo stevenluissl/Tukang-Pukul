@@ -3,29 +3,61 @@ package com.example.foodtower
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
 import com.mashape.unirest.http.Unirest
 import kotlinx.android.synthetic.main.activity_chef_page.*
 import kotlinx.android.synthetic.main.activity_food_menu1.*
 import kotlinx.android.synthetic.main.activity_homepage.*
+import kotlinx.android.synthetic.main.activity_subscribepage.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import org.json.JSONObject
-import kotlin.random.Random
 
 
 class chef_page : AppCompatActivity() {
-    var JobSchedulerID = 37
-    var myFirstRun : FirstRun? = null
+    var SQLitedb : sqlite_DBhelper? = null
+//    var myFirstRun : FirstRun? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chef_page)
 
+        SQLitedb = sqlite_DBhelper(this)
 
+        savedata.setOnClickListener {
+            var userTmp = sqlite_user()
+            userTmp.nama = chefpage_name.text.toString()
+            userTmp.no_telp = chefpage_hp.text.toString()
+            userTmp.lokasi = chefpage_location.text.toString()
+            userTmp.rekening = chefpage_rekening.text.toString()
+            userTmp.harga = chefpage_price.text.toString()
 
-
+            var result = SQLitedb?.addUser(userTmp)
+            if (result != 1L) {
+                Toast.makeText(this, "Berhasil", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                Toast.makeText(this, "Gagal", Toast.LENGTH_SHORT).show()
+            }
+            updateAdapter()
+            chefpage_name.text.clear()
+            chefpage_hp.text.clear()
+            chefpage_location.text.clear()
+            chefpage_rekening.text.clear()
+            chefpage_price.text.clear()
+        }
+        deletedata.setOnClickListener {
+            var nama = chefpage_spinner.selectedItem.toString()
+            if (nama != null || nama != "") {
+                doAsync {
+                    SQLitedb?.deleteUser(nama)
+                    updateAdapter()
+                }
+            }
+        }
         /*
         var serviceComponent = ComponentName(this,FoodRec::class.java)
         var myJobInfo = JobInfo.Builder(JobSchedulerID, serviceComponent)
@@ -89,32 +121,38 @@ class chef_page : AppCompatActivity() {
             startJob()
         }
 
+/*
+
         // Membuat database dengan nama myUserDataSubs.db
         var db = Room.databaseBuilder(
             this, DBUserSubs::class.java, "myUserDataSubs.db"
         ).build()
 
-        doAsync {
+        */
+/*doAsync {
             db.userDAO().nukeTable()
-        }
+        }*//*
 
-        myFirstRun = FirstRun(this)
+
+        */
+/*myFirstRun = FirstRun(this)
         myFirstRun?.firstRun = true
         if(myFirstRun!!.firstRun) {
             var secondIntent = Intent(this, pre_load::class.java)
             startActivity(secondIntent)
-        }
+        }*//*
+
 
         savedata.setOnClickListener {
             doAsync {
                 // Mendeklarasikan userSubs dan men-generate angka random untuk id (primary key)
                 var userSubsTMP = userSubs(Random.nextInt())
                 // Data yang diinput pada edit text akan masuk ke database
-                userSubsTMP.nama = editTextTextPersonName5.text.toString()
-                userSubsTMP.NoHP = editTextTextPersonName6.text.toString()
-                userSubsTMP.lokasi = editTextTextPersonName7.text.toString()
-                userSubsTMP.bank = editTextTextPersonName8.text.toString()
-                userSubsTMP.harga = editTextTextPersonName9.text.toString()
+                userSubsTMP.nama = chefpage_name.text.toString()
+                userSubsTMP.NoHP = chefpage_hp.text.toString()
+                userSubsTMP.lokasi = chefpage_location.text.toString()
+                userSubsTMP.bank = chefpage_rekening.text.toString()
+                userSubsTMP.harga = chefpage_price.text.toString()
                 // Memanggil database userSubsDAO dan query InsertDataSubs
                 db.userDAO().InsertDataSubs(userSubsTMP)
             }
@@ -124,7 +162,7 @@ class chef_page : AppCompatActivity() {
             doAsync {
                 // Memanggil database userSubsDAO dan query DeleteDataSubs
                 // untuk menghapus seluruh kolom yang memiliki data nama yang diinput di edit text nama
-                db.userDAO().DeleteDataSubs(editTextTextPersonName5.text.toString())
+                db.userDAO().nukeTable()
             }
         }
 
@@ -135,8 +173,22 @@ class chef_page : AppCompatActivity() {
                 // Memanggil database userSubsDAO dan query UpdateDataSubs
                 // untuk mengubah seluruh data pada kolom
                 // dengan menggunakan data nomor rekening sebagai acuan
-                db.userDAO().UpdateDataSubs(editTextTextPersonName5.text.toString(),editTextTextPersonName6.text.toString(),
-                    editTextTextPersonName7.text.toString(),editTextTextPersonName9.text.toString(),editTextTextPersonName8.text.toString())
+                db.userDAO().UpdateDataSubs(chefpage_name.text.toString(), chefpage_hp.text.toString(),
+                    chefpage_location.text.toString(), chefpage_price.text.toString(),chefpage_rekening.text.toString())
+            }
+        }
+*/
+
+    }
+
+    fun updateAdapter () {
+        doAsync {
+            var nameList = SQLitedb?.viewAllName()?.toTypedArray()
+            uiThread {
+                if (chefpage_spinner != null && nameList?.size != 0) {
+                    var arrayAdapter = ArrayAdapter(applicationContext, android.R.layout.simple_spinner_dropdown_item, nameList!!)
+                    chefpage_spinner.adapter = arrayAdapter
+                }
             }
         }
     }
@@ -157,7 +209,7 @@ class chef_page : AppCompatActivity() {
             var allres = JSONObject(all).getString("total_hits")
 
             //menampilkan String dari total hits
-            textView4.text = allres.toString()
+            chefpage_textView.text = allres.toString()
         }
     }
 }
