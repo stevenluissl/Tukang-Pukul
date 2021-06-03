@@ -16,12 +16,12 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
 
     override fun onCreate(db: SQLiteDatabase?) {
         var CREATE_USER_TABLE = "CREATE TABLE ${sqlite_userDB.userTable.USER_TABLE}" +
-                "{${sqlite_userDB.userTable.COLUMN_ID} INTEGER PRIMARY KEY," +
-                "{${sqlite_userDB.userTable.COLUMN_NAME} TEXT" +
-                "{${sqlite_userDB.userTable.COLUMN_HP} TEXT" +
-                "{${sqlite_userDB.userTable.COLUMN_LOCATION} TEXT" +
-                "{${sqlite_userDB.userTable.COLUMN_REKENING} TEXT" +
-                "{${sqlite_userDB.userTable.COLUMN_PRICE} TEXT)"
+                "(${sqlite_userDB.userTable.COLUMN_ID} INTEGER PRIMARY KEY," +
+                "${sqlite_userDB.userTable.COLUMN_NAME} TEXT" +
+                "${sqlite_userDB.userTable.COLUMN_HP} TEXT" +
+                "${sqlite_userDB.userTable.COLUMN_LOCATION} TEXT" +
+                "${sqlite_userDB.userTable.COLUMN_REKENING} TEXT" +
+                "${sqlite_userDB.userTable.COLUMN_PRICE} TEXT)"
         db?.execSQL(CREATE_USER_TABLE)
     }
 
@@ -34,10 +34,10 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
         var db = this.writableDatabase
         var contentValues = ContentValues().apply {
             put(sqlite_userDB.userTable.COLUMN_NAME, sqliteUser.nama)
-            put(sqlite_userDB.userTable.COLUMN_NAME, sqliteUser.no_telp)
-            put(sqlite_userDB.userTable.COLUMN_NAME, sqliteUser.lokasi)
-            put(sqlite_userDB.userTable.COLUMN_NAME, sqliteUser.rekening)
-            put(sqlite_userDB.userTable.COLUMN_NAME, sqliteUser.harga)
+            put(sqlite_userDB.userTable.COLUMN_HP, sqliteUser.no_telp)
+            put(sqlite_userDB.userTable.COLUMN_LOCATION, sqliteUser.lokasi)
+            put(sqlite_userDB.userTable.COLUMN_REKENING, sqliteUser.rekening)
+            put(sqlite_userDB.userTable.COLUMN_PRICE, sqliteUser.harga)
         }
         var success = db.insert(sqlite_userDB.userTable.USER_TABLE, null, contentValues)
         db.close()
