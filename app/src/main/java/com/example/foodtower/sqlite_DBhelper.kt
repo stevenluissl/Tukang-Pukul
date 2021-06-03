@@ -1,6 +1,5 @@
 package com.example.foodtower
 
-import MyDatabase.UserDataBase
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -16,7 +15,7 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        var CREATE_USER_TABLE = "CREATE TABLE ${UserDataBase.UserTable.USER_TABLE}" +
+        var CREATE_USER_TABLE = "CREATE TABLE ${sqlite_userDB.userTable.USER_TABLE}" +
                 "{${sqlite_userDB.userTable.COLUMN_ID} INTEGER PRIMARY KEY," +
                 "{${sqlite_userDB.userTable.COLUMN_NAME} TEXT" +
                 "{${sqlite_userDB.userTable.COLUMN_HP} TEXT" +
