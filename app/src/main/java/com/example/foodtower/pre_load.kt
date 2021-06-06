@@ -8,6 +8,7 @@ import org.jetbrains.anko.uiThread
 
 class pre_load : AppCompatActivity() {
     var sqliteDbhelper : sqlite_DBhelper? = null
+    //data untuk dimasukkan ke database
     private var chef = listOf(
         sqlite_user(1,"X1","","","",""),
         sqlite_user(2,"X2","","","",""),
@@ -96,11 +97,13 @@ class pre_load : AppCompatActivity() {
 
     private fun finishThisActivity() {
         var myFirstRun = FirstRun(this)
+        //ketika menekan tombol no pada preload maka first run akan bernilai false
+        //dan aktivitas tidak akan dijalankan lagi
         myFirstRun.firstRun = false
         this.finish()
     }
 
-    private fun executeLoadData() {
+    /*private fun executeLoadData() {
         preload_no.isEnabled = false
         preload_yes.isEnabled = false
 
@@ -119,5 +122,5 @@ class pre_load : AppCompatActivity() {
                 finishThisActivity()
             }
         }
-    }
+    }*/
 }

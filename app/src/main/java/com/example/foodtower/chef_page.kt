@@ -26,10 +26,13 @@ class chef_page : AppCompatActivity() {
         setContentView(R.layout.activity_chef_page)
 
         SQLitedb = sqlite_DBhelper(this)
+        //memanggil shared preference dari first run
         myFirstRun = FirstRun(this)
 
+        //jika aplikasi dijalankan akan melakukan fungsi delete all dan first run akan bernilai true
         SQLitedb?.deleteAll()
         myFirstRun?.firstRun = true
+        //jika aplikasi pertama kali dijalankan maka akan langsung ke halaman download data
         if(myFirstRun!!.firstRun) {
             var preload = Intent (this, pre_load::class.java)
             startActivity(preload)
