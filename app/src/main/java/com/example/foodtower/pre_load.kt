@@ -9,7 +9,7 @@ import org.jetbrains.anko.uiThread
 class pre_load : AppCompatActivity() {
     var sqliteDbhelper : sqlite_DBhelper? = null
     private var chef = listOf(
-        sqlite_user(1,"X2","","","",""),
+        sqlite_user(1,"X1","","","",""),
         sqlite_user(2,"X2","","","",""),
         sqlite_user(3,"X3","","","",""),
         sqlite_user(4,"X4","","","",""),

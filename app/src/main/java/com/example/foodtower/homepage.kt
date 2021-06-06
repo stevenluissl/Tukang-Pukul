@@ -9,22 +9,10 @@ import kotlinx.android.synthetic.main.activity_homepage.*
 
 class homepage : AppCompatActivity() {
 
-    var SQLitedb : sqlite_DBhelper? = null
-    var myFirstRun : FirstRun? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_homepage)
-
-        SQLitedb = sqlite_DBhelper(this)
-        myFirstRun = FirstRun(this)
-
-        SQLitedb?.deleteAll()
-        myFirstRun?.firstRun = true
-        if(myFirstRun!!.firstRun) {
-            var preload = Intent (this, pre_load::class.java)
-            startActivity(preload)
-        }
 
         //image slider
         val sampleImages = intArrayOf(

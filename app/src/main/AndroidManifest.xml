@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.example.foodtower.provider.READ_dbURI"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".pre_load"></activity>
-        <activity android:name=".pre_load_data" />
 
         <service
             android:name=".playmusic"
@@ -81,6 +82,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <provider
+            android:authorities="com.example.foodtower.provider.provider.ContentProvider"
+            android:name=".provider.ContentProvider"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.example.foodtower.provider.READ_dbURI"
+            android:grantUriPermissions="true" />
     </application>
 
 </manifest>

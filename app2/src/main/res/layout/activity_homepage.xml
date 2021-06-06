@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".homepage">
+
+    <!--foodtower-->
+
+    <ImageView
+        android:id="@+id/FoodTower1"
+        android:layout_width="293dp"
+        android:layout_height="186dp"
+        android:src="@drawable/foodtower1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fadebottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fadetop"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <!--fadetop-->
+
+    <ImageView
+        android:id="@+id/fadetop"
+        android:layout_width="410dp"
+        android:layout_height="136dp"
+        android:src="@drawable/fade_top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003" />
+
+    <!--fadebottom-->
+    <ImageView
+        android:id="@+id/fadebottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/fade_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/menu_drop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/menu_drop" />
+
+
+    <!--search view-->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="264dp"
+        android:layout_height="52dp"
+        android:background="@drawable/custom_searchview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fadebottom"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="411dp"
+        android:layout_height="500dp"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fadetop">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--image slider-->
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/caroselView"
+                android:layout_width="332dp"
+                android:layout_height="214dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ListView
+                    android:id="@+id/listView"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content" />
+
+            </com.synnapps.carouselview.CarouselView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/caroselView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/fade_recommend1"
+                        android:layout_width="398dp"
+                        android:layout_height="189dp"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.545"
+                        app:srcCompat="@drawable/fade_recommend_home" />
+
+                    <ImageView
+                        android:id="@+id/profile1"
+                        android:layout_width="47dp"
+                        android:layout_height="51dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/logoprofilejurumasak" />
+
+                    <TextView
+                        android:id="@+id/jurumasak1"
+                        android:layout_width="171dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="108dp"
+                        android:layout_marginTop="36dp"
+                        android:text="Nama Juru Masak"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/masakan1"
+                        android:layout_width="90dp"
+                        android:layout_height="72dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr1" />
+
+                    <ImageView
+                        android:id="@+id/masakan2"
+                        android:layout_width="116dp"
+                        android:layout_height="74dp"
+                        android:layout_marginStart="144dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr2" />
+
+                    <ImageView
+                        android:id="@+id/masakan3"
+                        android:layout_width="105dp"
+                        android:layout_height="76dp"
+                        android:layout_marginStart="264dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr3" />
+
+                    <Button
+                        android:id="@+id/chefpage"
+                        android:layout_width="72dp"
+                        android:layout_height="32dp"
+                        android:visibility="visible"
+                        android:text="View"
+                        android:textSize="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/fade_recommend1"
+                        app:layout_constraintHorizontal_bias="0.914"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.197" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/fade_recommend2"
+                        android:layout_width="395dp"
+                        android:layout_height="190dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0"
+                        app:srcCompat="@drawable/fade_recommend_home" />
+
+                    <ImageView
+                        android:id="@+id/profile2"
+                        android:layout_width="44dp"
+                        android:layout_height="47dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/logoprofilejurumasak" />
+
+                    <TextView
+                        android:id="@+id/jurumasak2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="112dp"
+                        android:layout_marginTop="28dp"
+                        android:text="Nama Juru Masak"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/masakan4"
+                        android:layout_width="102dp"
+                        android:layout_height="72dp"
+                        android:layout_marginStart="56dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr1" />
+
+                    <ImageView
+                        android:id="@+id/masakan5"
+                        android:layout_width="119dp"
+                        android:layout_height="73dp"
+                        android:layout_marginStart="144dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr2" />
+
+                    <ImageView
+                        android:id="@+id/masakan6"
+                        android:layout_width="110dp"
+                        android:layout_height="71dp"
+                        android:layout_marginStart="248dp"
+                        android:layout_marginTop="92dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/gmbr3" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="72dp"
+                        android:layout_height="31dp"
+                        android:layout_marginTop="24dp"
+                        android:text="View"
+                        android:textSize="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.912"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageButton
+        android:id="@+id/logo_home"
+        android:layout_width="54dp"
+        android:layout_height="59dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.529"
+        app:srcCompat="@drawable/logo_home" />
+
+    <ImageButton
+        android:id="@+id/logo_message"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.364"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.545"
+        app:srcCompat="@drawable/logo_message" />
+
+    <ImageButton
+        android:id="@+id/logo_notif"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.484"
+        app:srcCompat="@drawable/logo_notif" />
+
+    <ImageButton
+        android:id="@+id/logo_acc"
+        android:layout_width="71dp"
+        android:layout_height="60dp"
+        android:background="#0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"
+        app:layout_constraintVertical_bias="0.484"
+        app:srcCompat="@drawable/logo_acc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
