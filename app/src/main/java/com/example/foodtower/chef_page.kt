@@ -36,7 +36,7 @@ class chef_page : AppCompatActivity() {
             userTmp.harga = chefpage_price.text.toString()
 
             var result = SQLitedb?.addUser(userTmp)
-            if (result != 1L) {
+            if (result !=-1L) {
                 Toast.makeText(this, "Berhasil", Toast.LENGTH_SHORT).show()
             }
             else {

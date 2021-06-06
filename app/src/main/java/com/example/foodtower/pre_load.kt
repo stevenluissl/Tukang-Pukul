@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pre_load.*
 
 class pre_load : AppCompatActivity() {
-    var myUserSubs : userSubsDAO? = null
+    var myUserSubs : sqlite_DBhelper? = null
     private var chef = listOf(
         userSubs(1,"X1","","","",""),
         userSubs(2,"X2","","","",""),
@@ -82,6 +82,7 @@ class pre_load : AppCompatActivity() {
 
         progressBar.progress = 0
         progressBar.max = chef.size
+
 
     }
 }

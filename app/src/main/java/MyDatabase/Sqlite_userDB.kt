@@ -1,4 +1,4 @@
-package com.example.foodtower
+package MyDatabase
 
 import android.provider.BaseColumns
 

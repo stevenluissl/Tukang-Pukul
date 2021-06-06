@@ -1,5 +1,6 @@
 package com.example.foodtower
 
+import MyDatabase.sqlite_userDB
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
@@ -10,22 +11,22 @@ import android.database.sqlite.SQLiteOpenHelper
 class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
     context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
-        private val DATABASE_NAME = "SQLite_database.db"
+        private val DATABASE_NAME = "SQLitedb.db"
         private val DATABASE_VERSION = 1
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        var CREATE_USER_TABLE = "CREATE TABLE ${sqlite_userDB.userTable.USER_TABLE}" +
+        var CREATE_USER_TABLE = "CREATE TABLE ${sqlite_userDB.userTable.USER_TABLE} " +
                 "(${sqlite_userDB.userTable.COLUMN_ID} INTEGER PRIMARY KEY," +
-                "${sqlite_userDB.userTable.COLUMN_NAME} TEXT" +
-                "${sqlite_userDB.userTable.COLUMN_HP} TEXT" +
-                "${sqlite_userDB.userTable.COLUMN_LOCATION} TEXT" +
-                "${sqlite_userDB.userTable.COLUMN_REKENING} TEXT" +
+                "${sqlite_userDB.userTable.COLUMN_NAME} TEXT," +
+                "${sqlite_userDB.userTable.COLUMN_HP} TEXT," +
+                "${sqlite_userDB.userTable.COLUMN_LOCATION} TEXT," +
+                "${sqlite_userDB.userTable.COLUMN_REKENING} TEXT," +
                 "${sqlite_userDB.userTable.COLUMN_PRICE} TEXT)"
         db?.execSQL(CREATE_USER_TABLE)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
         db?.execSQL("DROP TABLE IF EXISTS ${sqlite_userDB.userTable.USER_TABLE}")
         onCreate(db)
     }
@@ -49,7 +50,7 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
         val SELECT_NAME = "SELECT ${sqlite_userDB.userTable.COLUMN_NAME} FROM " +
                 "${sqlite_userDB.userTable.USER_TABLE}"
         var db = this.readableDatabase
-        var cursor : Cursor ?= null
+        var cursor : Cursor?= null
         try {
             cursor = db.rawQuery(SELECT_NAME, null)
         }
@@ -70,7 +71,7 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
     fun deleteUser(nama : String) {
         var db = this.writableDatabase
         var selection = "${sqlite_userDB.userTable.COLUMN_NAME} = ?"
-        var selectionAgrs = arrayOf(nama)
-        db.delete(sqlite_userDB.userTable.USER_TABLE, selection, selectionAgrs)
+        var selectionArgs = arrayOf(nama)
+        db.delete(sqlite_userDB.userTable.USER_TABLE, selection, selectionArgs)
     }
 }
