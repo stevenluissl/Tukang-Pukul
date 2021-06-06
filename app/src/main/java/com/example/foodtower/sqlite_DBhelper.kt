@@ -92,20 +92,20 @@ class sqlite_DBhelper (context: Context) : SQLiteOpenHelper (
     }
 
     fun addusertrans(sqliteuser: sqlite_user) {
-        var sqlString = "INSERT ${sqlite_userDB.userTable.USER_TABLE}" +
-                "(${sqlite_userDB.userTable.COLUMN_ID}," +
-                "${sqlite_userDB.userTable.COLUMN_NAME}," +
-                "${sqlite_userDB.userTable.COLUMN_HP}," +
-                "${sqlite_userDB.userTable.COLUMN_LOCATION}," +
-                "${sqlite_userDB.userTable.COLUMN_REKENING}," +
-                "${sqlite_userDB.userTable.COLUMN_PRICE}) VALUES (?,?,?,?,?,?)"
+        var sqlString = "INSERT INTO ${sqlite_userDB.userTable.USER_TABLE}" +
+                "(${sqlite_userDB.userTable.COLUMN_ID}" +
+                ",${sqlite_userDB.userTable.COLUMN_NAME}" +
+                ",${sqlite_userDB.userTable.COLUMN_HP}" +
+                ",${sqlite_userDB.userTable.COLUMN_LOCATION}" +
+                ",${sqlite_userDB.userTable.COLUMN_REKENING}" +
+                ",${sqlite_userDB.userTable.COLUMN_PRICE}) VALUES (?,?,?,?,?,?)"
         val statment = this.writableDatabase.compileStatement(sqlString)
         statment.bindLong(1, sqliteuser.id.toLong())
         statment.bindString(2, sqliteuser.nama)
         statment.bindString(3, sqliteuser.no_telp)
         statment.bindString(4, sqliteuser.lokasi)
         statment.bindString(5, sqliteuser.rekening)
-        statment.bindString(5, sqliteuser.harga)
+        statment.bindString(6, sqliteuser.harga)
         statment.execute()
         statment.clearBindings()
     }

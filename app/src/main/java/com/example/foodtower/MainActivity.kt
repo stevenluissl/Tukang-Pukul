@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
             val homepage = Intent(this@MainActivity,homepage::class.java)
             startActivity(homepage)
 
+
+
         }
     }
 }
