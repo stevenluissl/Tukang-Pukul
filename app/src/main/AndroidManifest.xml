@@ -7,7 +7,8 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.example.foodtower.provider.READ_dbURI"
+    <uses-permission
+        android:name="com.example.foodtower.provider.READ_dbURI"
         android:protectionLevel="normal" />
 
     <application
@@ -17,7 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pre_load"></activity>
+        <receiver android:name=".AppInformationWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/app_information_widget_info" />
+        </receiver>
+
+        <activity android:name=".pre_load" />
 
         <service
             android:name=".playmusic"
@@ -82,13 +93,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
         <provider
-            android:authorities="com.example.foodtower.provider.provider.ContentProvider"
             android:name=".provider.ContentProvider"
+            android:authorities="com.example.foodtower.provider.provider.ContentProvider"
             android:enabled="true"
             android:exported="true"
-            android:readPermission="com.example.foodtower.provider.READ_dbURI"
-            android:grantUriPermissions="true" />
+            android:grantUriPermissions="true"
+            android:readPermission="com.example.foodtower.provider.READ_dbURI" />
     </application>
 
 </manifest>

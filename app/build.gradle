@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+/*apply plugin: 'kotlin-kapt'*/
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    buildToolsVersion "30.0.2"
 
     defaultConfig {
         applicationId "com.example.foodtower"
@@ -26,6 +26,9 @@ android {
 
     androidExtensions {
         experimental = true
+    }
+    buildFeatures {
+        viewBinding = true
     }
 
 
@@ -57,5 +60,5 @@ dependencies {
     androidTestImplementation'androidx.test.espresso:espresso-intents:3.1.0'
 
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    /*kapt "androidx.room:room-compiler:$room_version"*/
 }
