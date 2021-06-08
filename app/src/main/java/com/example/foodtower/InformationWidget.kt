@@ -4,15 +4,9 @@ class InformationWidget {
     /*var menu_satu = food_menu1()
     var judul_satu = menu_satu.menumakanan.text*/
     private var listMenu = arrayListOf(
-        "Ayam Goreng\nLorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-                "Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies," +
-                "purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-        "Ikan Panggang\nLorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-                "Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies," +
-                "purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-        "Rendang Ayam\nLorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-                "Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies," +
-                "purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+        "Testing 1",
+        "Testing 2",
+        "Testing 3",
         /*"${judul_satu}"*/
     )
     private var index = -1
