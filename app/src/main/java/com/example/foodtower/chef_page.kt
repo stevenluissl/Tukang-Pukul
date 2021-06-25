@@ -128,9 +128,9 @@ class chef_page : AppCompatActivity() {
             startActivity(intentSMS)
         }
 
-        foodrec.setOnClickListener {
+        /*foodrec.setOnClickListener {
             startJob()
-        }
+        }*/
 
 /*
 
@@ -209,7 +209,7 @@ class chef_page : AppCompatActivity() {
         updateAdapter()
     }
 
-    private fun startJob() {
+    /*private fun startJob() {
         doAsync {
             var response =
                 //menggunakan Unirest untuk mendapatkan API dari API Nutrisi
@@ -227,5 +227,5 @@ class chef_page : AppCompatActivity() {
             //menampilkan String dari total hits
             chefpage_textView.text = allres.toString()
         }
-    }
+    }*/
 }
