@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "787972820291",
+    "project_id": "foodtower-8e6d9",
+    "storage_bucket": "foodtower-8e6d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787972820291:android:9370b37cd5bab3bc8c73f6",
+        "android_client_info": {
+          "package_name": "com.example.foodtower"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787972820291-tfj28hac8unl7di1gv804pqq83t4lnl3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNIQ98JWLtOp71moY5356L-hEbYJwXpbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "787972820291-tfj28hac8unl7di1gv804pqq83t4lnl3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_food_menu1.*
 
 class food_menu1 : AppCompatActivity() {
@@ -11,7 +13,15 @@ class food_menu1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_menu1)
 
+        //inisialisasi ads
+        MobileAds.initialize(this) {}
+        //iklan akan diload
+        adView.loadAd(AdRequest.Builder().build())
 
+        //menutup ads secara sementara
+        closeAd.setOnClickListener {
+            adView.destroy()
+        }
 
         //membentuk intent dan menjalankan service
         var voteService = Intent (this, MyService::class.java)

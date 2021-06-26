@@ -60,6 +60,21 @@
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
+        <receiver android:name=".InformationWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_DISABLED" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/information_widget_info" />
+        </receiver>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8141178372160852~8301085013" />
 
         <activity android:name=".MainActivity3" />
         <activity android:name=".MainActivity2" />
