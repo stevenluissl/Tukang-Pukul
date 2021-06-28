@@ -32,9 +32,10 @@ class FirebaseController (context: Context) {
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if(snapshot!!.exists()) {
+                    hasil.clear()
                     for (data in snapshot.children) {
                         val user = data.getValue(DataClassFirebase::class.java)
-                        user.let {
+                        user?.let {
                             hasil.put(data.key.toString(), it!!.nama)
                         }
                     }
@@ -47,5 +48,16 @@ class FirebaseController (context: Context) {
 
         })
         return hasil
+    }
+    fun deleteUser(srcUsername : String) {
+        val key = readUsername().filterValues { it == srcUsername }.keys
+        reference.child(key.first())
+        Toast.makeText(myContext,"Data Deleted.",Toast.LENGTH_SHORT)
+    }
+
+    fun dataExist(srcName: String) : Boolean {
+        if(readUsername().containsValue(srcName))
+            return true
+        return false
     }
 }

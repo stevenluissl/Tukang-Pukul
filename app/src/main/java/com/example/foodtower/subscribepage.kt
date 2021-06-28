@@ -2,6 +2,7 @@
 
 import android.app.*
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -12,6 +13,7 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -53,8 +55,12 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         controller = FirebaseController(this)
 
         var submit = findViewById<Button>(R.id.btnSubmit)
+        var delete = findViewById<Button>(R.id.btnDeleteData)
         submit.setOnClickListener {
             saveData()
+        }
+        delete.setOnClickListener {
+            deleteUser()
         }
 
         play_music.setOnClickListener{
@@ -101,7 +107,7 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             }
         }
 
-        reqinformation.setOnClickListener {
+        /*btnDeleteData.setOnClickListener {
 
             editTextNama.clearComposingText()
             val intent = Intent(this, LauncherActivity::class.java)
@@ -170,7 +176,7 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             //notification akan di panggil dan juga harus memiliki id yang unik juga
             notificationManager.notify(1234, builder.build())
 
-        }
+        }*/
 
         val backsatu = findViewById<ImageButton>(R.id.backsatu)
         backsatu?.setOnClickListener {
@@ -225,6 +231,31 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             editTextAlamat.setText(subspref.subsaddress)
             editTextCity.setText(subspref.subscity)
             editTextKecamatan.setText(subspref.subsdistrict)
+        }
+    }
+
+    private fun deleteUser() {
+        var userDeleted = findViewById<EditText>(R.id.editTextDeleteData)
+        if (controller.dataExist(userDeleted.text.toString())) {
+            AlertDialog.Builder(this).apply {
+                setTitle("Data Found.")
+                setMessage("Delete data?")
+                    .setPositiveButton("Yes",DialogInterface.OnClickListener {
+                        dialogInterface, i ->  controller.deleteUser(userDeleted.text.toString())
+                    })
+                    .setNegativeButton("No",DialogInterface.OnClickListener{
+                        dialogInterface, i -> userDeleted.text.clear()
+                    })
+            }.show()
+        }
+        else {
+            AlertDialog.Builder(this).apply {
+                setTitle("Data Not Found.")
+                setMessage("Data can't be found.")
+                    .setPositiveButton("OK",DialogInterface.OnClickListener{
+                            dialogInterface, i -> userDeleted.text.clear()
+                    })
+            }.show()
         }
     }
 
