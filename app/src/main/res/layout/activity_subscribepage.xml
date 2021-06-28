@@ -74,18 +74,6 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/fadebottom_subscribe"
-        android:layout_width="657dp"
-        android:layout_height="1236dp"
-        android:src="@drawable/fade_bottom"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
-
-    <ImageView
         android:id="@+id/bordersubscribe"
         android:layout_width="211dp"
         android:layout_height="236dp"
@@ -95,7 +83,46 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
+        app:layout_constraintVertical_bias="0.787" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price : IDR 9.999.999 / Month"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.553" />
+
+    <TextView
+        android:id="@+id/namajurumasak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Juru Masak"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <TextView
+        android:id="@+id/no_rekening"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nomor Rekening"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -181,12 +208,10 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titik"
@@ -194,12 +219,10 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titik3"
@@ -207,12 +230,10 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titik4"
@@ -220,12 +241,10 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/titik5"
@@ -233,12 +252,10 @@
         android:layout_height="wrap_content"
         android:text=":"
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fadebottom_subscribe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.447" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextNama"
@@ -292,83 +309,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.463" />
 
-    <EditText
-        android:id="@+id/editTextDeleteData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price : IDR 9.999.999 / Month"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
-
-    <TextView
-        android:id="@+id/namajurumasak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama Juru Masak"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
-
     <TextView
         android:id="@+id/bca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="156dp"
         android:text="BCA"
         android:textColor="#FFFFFF"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fadebottom_subscribe"
-        app:layout_constraintVertical_bias="0.887" />
-
-    <TextView
-        android:id="@+id/no_rekening"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nomor Rekening"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
-
-    <Button
-        android:id="@+id/btnDeleteData"
-        android:layout_width="104dp"
-        android:layout_height="39dp"
-        android:text="Delete Data"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnSubmit"

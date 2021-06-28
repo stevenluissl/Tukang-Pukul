@@ -59,9 +59,9 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         submit.setOnClickListener {
             saveData()
         }
-        delete.setOnClickListener {
+        /*delete.setOnClickListener {
             deleteUser()
-        }
+        }*/
 
         play_music.setOnClickListener{
             //untuk membuat pada saat kita menekan play maka yang keluar akan stop
