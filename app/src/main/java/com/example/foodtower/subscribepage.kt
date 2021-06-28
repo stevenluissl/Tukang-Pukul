@@ -55,11 +55,12 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         controller = FirebaseController(this)
 
         var submit = findViewById<Button>(R.id.btnSubmit)
-        var delete = findViewById<Button>(R.id.btnDeleteData)
         submit.setOnClickListener {
             saveData()
         }
-        /*delete.setOnClickListener {
+
+        /*var delete = findViewById<Button>(R.id.btnDeleteData)
+        delete.setOnClickListener {
             deleteUser()
         }*/
 
@@ -193,7 +194,6 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             if(idsound != 0) {
                 sound?.play(idsound,.99f,.99f,1,0,.99f)
             }
-
         }
 
         /*val tesbutton = findViewById<Button>(R.id.tesbutton)
@@ -234,7 +234,7 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         }
     }
 
-    private fun deleteUser() {
+    /*private fun deleteUser() {
         var userDeleted = findViewById<EditText>(R.id.editTextDeleteData)
         if (controller.dataExist(userDeleted.text.toString())) {
             AlertDialog.Builder(this).apply {
@@ -257,7 +257,7 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
                     })
             }.show()
         }
-    }
+    }*/
 
     private fun saveData() {
         controller.saveUser(DataClassFirebase(

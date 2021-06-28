@@ -10,7 +10,7 @@ import com.google.firebase.ktx.Firebase
 
 class FirebaseController (context: Context) {
     private var database = Firebase.database
-    private val reference = database.getReference("USER")
+    private val reference = database.getReference("USERS")
     private val myContext = context
 
     fun saveUser(users: DataClassFirebase) {
