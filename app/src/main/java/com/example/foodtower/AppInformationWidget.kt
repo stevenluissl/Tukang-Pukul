@@ -28,7 +28,7 @@ class AppInformationWidget : AppWidgetProvider() {
         // Enter relevant functionality for when the last widget is disabled
     }
     companion object {
-        var menu = InformationWidget()
+        var menu = DataInformation()
         internal fun updateAppWidget(
             context: Context,
             appWidgetManager: AppWidgetManager,
@@ -36,7 +36,7 @@ class AppInformationWidget : AppWidgetProvider() {
         ) {
             val widgetText = menu.getMenu()
             // Construct the RemoteViews object
-            val views = RemoteViews(context.packageName, R.layout.app_information_widget)
+            val views = RemoteViews(context.packageName, R.layout.information_widget)
             views.setTextViewText(R.id.appwidget_text, widgetText)
 
             // Instruct the widget manager to update the widget

@@ -26,6 +26,8 @@ private var myIntentService : Intent? = null
 
 class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
 
+    lateinit var controller: FirebaseController
+
     private val subsPrefFileName = "MySubsPref"
     var DisplayName = ContactsContract.Contacts.DISPLAY_NAME
     var noTelp = ContactsContract.CommonDataKinds.Phone.NUMBER
@@ -48,6 +50,13 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subscribepage)
 
+        controller = FirebaseController(this)
+
+        var submit = findViewById<Button>(R.id.btnSubmit)
+        submit.setOnClickListener {
+            saveData()
+        }
+
         play_music.setOnClickListener{
             //untuk membuat pada saat kita menekan play maka yang keluar akan stop
             if (play_music.text.toString().toUpperCase().equals("PLAY")){
@@ -62,7 +71,6 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
                 myIntentService?.setAction(ACTION_STOP)
                 startService(myIntentService)
             }
-
         }
 
         /* LoaderManager.getInstance(this).initLoader(1, null, this)*/
@@ -81,10 +89,10 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
                 sound?.play(idsound,.99f,.99f,1,0,.99f)
             }
 
-           var nama = editTextTextPersonName.text.toString()
+           var nama = editTextNama.text.toString()
             //mengecek apakah textbox tersebut kosong, bila kosong maka akan menampilkan error "Nama Tidak Boleh Kosong"
             if(nama.isEmpty()) {
-                editTextTextPersonName.setError("Nama Tidak Boleh Kosong")
+                editTextNama.setError("Nama Tidak Boleh Kosong")
             }
             //jika ada text maka
             //menggunakan fungsi dari Presenter untuk mengirimkan data Nama dan Harga
@@ -93,10 +101,9 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             }
         }
 
-
         reqinformation.setOnClickListener {
 
-            editTextTextPersonName.clearComposingText()
+            editTextNama.clearComposingText()
             val intent = Intent(this, LauncherActivity::class.java)
             val pendingIntent =
                 PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -182,42 +189,58 @@ class subscribepage : AppCompatActivity(),interfaceSubs, View.OnClickListener {
             }
 
         }
-        val tesbutton = findViewById<Button>(R.id.tesbutton)
+
+        /*val tesbutton = findViewById<Button>(R.id.tesbutton)
         tesbutton?.setOnClickListener {
             val RecyclerView = Intent(this@subscribepage, RecyclerView::class.java)
             startActivity(RecyclerView)
             if(idsound != 0) {
                 sound?.play(idsound,.99f,.99f,1,0,.99f)
             }
-        }
+        }*/
 
         subs.setOnClickListener {
             //akses dan simpan file
             var subspref = SubsSharedPref(this, subsPrefFileName)
             //menyimpan data yang diinput ke dalam file
-            subspref.subsname = editTextTextPersonName.text.toString()
+            subspref.subsname = editTextNama.text.toString()
             subspref.subsphonenumber = editTextPhone.text.toString()
-            subspref.subsaddress = editTextTextPersonName2.text.toString()
-            subspref.subscity = editTextTextPersonName3.text.toString()
-            subspref.subsdistrict = editTextTextPersonName4.text.toString()
+            subspref.subsaddress = editTextAlamat.text.toString()
+            subspref.subscity = editTextCity.text.toString()
+            subspref.subsdistrict = editTextKecamatan.text.toString()
             Toast.makeText(this, "Subs Berhasil",Toast.LENGTH_SHORT).show()
-            editTextTextPersonName.text.clear()
+            editTextNama.text.clear()
             editTextPhone.text.clear()
-            editTextTextPersonName2.text.clear()
-            editTextTextPersonName3.text.clear()
-            editTextTextPersonName4.text.clear()
+            editTextAlamat.text.clear()
+            editTextCity.text.clear()
+            editTextKecamatan.text.clear()
         }
 
         showData.setOnClickListener {
             //akses dan simpan file
             var subspref = SubsSharedPref(this, subsPrefFileName)
             //menampilkan data dari file
-            editTextTextPersonName.setText(subspref.subsname)
+            editTextNama.setText(subspref.subsname)
             editTextPhone.setText(subspref.subsphonenumber)
-            editTextTextPersonName2.setText(subspref.subsaddress)
-            editTextTextPersonName3.setText(subspref.subscity)
-            editTextTextPersonName4.setText(subspref.subsdistrict)
+            editTextAlamat.setText(subspref.subsaddress)
+            editTextCity.setText(subspref.subscity)
+            editTextKecamatan.setText(subspref.subsdistrict)
         }
+    }
+
+    private fun saveData() {
+        controller.saveUser(DataClassFirebase(
+            editTextNama.text.toString(),
+            editTextPhone.text.toString(),
+            editTextAlamat.text.toString(),
+            editTextCity.text.toString(),
+            editTextKecamatan.text.toString() )
+        )
+        editTextNama.text.clear()
+        editTextPhone.text.clear()
+        editTextAlamat.text.clear()
+        editTextCity.text.clear()
+        editTextKecamatan.text.clear()
     }
 
     //menampilkan Harga ke dalam view

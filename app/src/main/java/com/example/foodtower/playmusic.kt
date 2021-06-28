@@ -38,7 +38,7 @@ MediaPlayer.OnErrorListener{
                     if (!myMediaPlayer!!.isPlaying){
                         //membuka file pada folder raw
                         val assetFileDescriptor = this.resources
-                            .openRawResourceFd(R.raw.ora)
+                            .openRawResourceFd(R.raw.rickroll)
                         myMediaPlayer?.run {
                             reset()
                             setDataSource(

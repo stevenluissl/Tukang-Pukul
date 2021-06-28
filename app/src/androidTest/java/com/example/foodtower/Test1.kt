@@ -40,7 +40,7 @@ class subs {
 
     @Test
     fun textbox() {
-        onView(withId(R.id.editTextTextPersonName)).perform(ViewActions.typeText("Budi"))
+        onView(withId(R.id.editTextNama)).perform(ViewActions.typeText("Budi"))
         onView(withId(R.id.clear)).perform(ViewActions.click())
     }
 
